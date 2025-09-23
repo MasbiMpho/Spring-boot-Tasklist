@@ -1,1 +1,4 @@
+com\api\tasklist\controller\TaskController.class
+com\api\tasklist\model\Task.class
+com\api\tasklist\repository\TaskRepository.class
 com\api\tasklist\TasklistApplication.class

@@ -1,0 +1,56 @@
+databaseChangeLog:
+  - changeSet:
+      id: "1"
+      author: mpho
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - tableExists:
+                tableName: task
+      changes:
+        - createTable:
+            tableName: task
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: due_date
+                  type: DATE
+
+
+  - changeSet:
+      id: "2"
+      author: mpho
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - tableExists:
+                tableName: task
+      changes:
+        - insert:
+            tableName: tasks
+            columns:
+              - column:
+                  name: name
+                  value: "Complete spring boot tasklist project"
+              - column:
+                  name: status
+                  value: "uncompleted"
+              - column:
+                  name: due_date
+                  valueDate: "2025-09-26"
