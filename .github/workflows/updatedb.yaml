@@ -1,0 +1,43 @@
+name: "Update Database Dump"
+on:
+  workflow_dispatch:
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: admin
+          POSTGRES_DB: taskdb
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd="pg_isready -U postgres -d taskdb"
+          --health-interval="5s"
+          --health-timeout="5s"
+          --health-retries="5s"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Postgres client
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client
+
+      - name: Dump schema
+        run: pg_dump -h localhost -U postgres -d taskdb -s --no-owner --no-acl -f docker/init/schema.sql
+
+      - name: Dump data
+        run: pg_dump -h localhost -U postgres -d taskdb -a --inserts --no-owner --no-acl -f docker/init/data.sql
+
+      - name: Combine schema and data
+        run: cat docker/init/schema.sql docker/init/data.sql > docker/init/init.sql
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add docker/init/*.sql
+          git commit -m "Update database dump" || echo "No changes to commit"
+          git push
