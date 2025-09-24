@@ -1,631 +1,130 @@
-2025-09-23T10:46:11.513+02:00  INFO 4924 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Starting TasklistApplication using Java 21.0.6 with PID 4924 (C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist\target\classes started by Mpho Masibigiri in C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist)
-2025-09-23T10:46:11.515+02:00 DEBUG 4924 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Running with Spring Boot v3.5.6, Spring v6.2.11
-2025-09-23T10:46:11.516+02:00  INFO 4924 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : No active profile set, falling back to 1 default profile: "default"
-2025-09-23T10:46:11.720+02:00  INFO 4924 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-23T10:46:11.770+02:00  INFO 4924 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 1 JPA repository interface.
-2025-09-23T10:46:11.848+02:00  INFO 4924 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-09-23T10:46:11.849+02:00  INFO 4924 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-09-23T10:46:11.850+02:00  INFO 4924 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
-2025-09-23T10:46:11.871+02:00  INFO 4924 --- [tasklist] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
-2025-09-23T10:46:11.872+02:00  INFO 4924 --- [tasklist] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 352 ms
-2025-09-23T10:46:11.915+02:00  INFO 4924 --- [tasklist] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-23T10:46:11.926+02:00  INFO 4924 --- [tasklist] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-09-23T10:46:11.949+02:00  INFO 4924 --- [tasklist] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-09-23T10:46:11.984+02:00  INFO 4924 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-44 - Starting...
-2025-09-23T10:46:12.233+02:00  INFO 4924 --- [tasklist] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-44 - Added connection org.postgresql.jdbc.PgConnection@72f33fc8
-2025-09-23T10:46:12.278+02:00  INFO 4924 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-44 - Start completed.
-2025-09-23T10:46:12.303+02:00  WARN 4924 --- [tasklist] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-09-23T10:46:12.307+02:00  INFO 4924 --- [tasklist] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-44)']
-	Database driver: undefined/unknown
-	Database version: 17.4
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-09-23T10:46:12.367+02:00  INFO 4924 --- [tasklist] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-23T10:46:12.458+02:00  INFO 4924 --- [tasklist] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T10:46:12.647+02:00  WARN 4924 --- [tasklist] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-23T10:46:12.940+02:00  INFO 4924 --- [tasklist] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-09-23T10:46:12.963+02:00  INFO 4924 --- [tasklist] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-09-23T10:46:12.982+02:00  INFO 4924 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-09-23T10:46:12.987+02:00  INFO 4924 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Started TasklistApplication in 1.596 seconds (process running for 2074.595)
-2025-09-23T10:46:12.989+02:00  INFO 4924 --- [tasklist] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2025-09-23T10:46:15.425+02:00  INFO 4924 --- [tasklist] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2025-09-23T10:46:15.437+02:00  INFO 4924 --- [tasklist] [Thread-176] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-09-23T10:46:15.477+02:00  INFO 4924 --- [tasklist] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-09-23T10:46:15.483+02:00  INFO 4924 --- [tasklist] [Thread-176] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T10:46:15.484+02:00  INFO 4924 --- [tasklist] [Thread-176] com.zaxxer.hikari.HikariDataSource       : HikariPool-44 - Shutdown initiated...
-2025-09-23T10:46:15.489+02:00  INFO 4924 --- [tasklist] [Thread-176] com.zaxxer.hikari.HikariDataSource       : HikariPool-44 - Shutdown completed.
-2025-09-23T10:46:15.688+02:00  INFO 4924 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Starting TasklistApplication using Java 21.0.6 with PID 4924 (C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist\target\classes started by Mpho Masibigiri in C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist)
-2025-09-23T10:46:15.689+02:00 DEBUG 4924 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Running with Spring Boot v3.5.6, Spring v6.2.11
-2025-09-23T10:46:15.690+02:00  INFO 4924 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : No active profile set, falling back to 1 default profile: "default"
-2025-09-23T10:46:15.946+02:00  INFO 4924 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-23T10:46:15.958+02:00  INFO 4924 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 1 JPA repository interface.
-2025-09-23T10:46:16.102+02:00  INFO 4924 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-09-23T10:46:16.104+02:00  INFO 4924 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-09-23T10:46:16.105+02:00  INFO 4924 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
-2025-09-23T10:46:16.149+02:00  INFO 4924 --- [tasklist] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
-2025-09-23T10:46:16.150+02:00  INFO 4924 --- [tasklist] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 456 ms
-2025-09-23T10:46:16.210+02:00  INFO 4924 --- [tasklist] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-23T10:46:16.216+02:00  INFO 4924 --- [tasklist] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-09-23T10:46:16.233+02:00  INFO 4924 --- [tasklist] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-09-23T10:46:16.237+02:00  INFO 4924 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-45 - Starting...
-2025-09-23T10:46:16.359+02:00  INFO 4924 --- [tasklist] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-45 - Added connection org.postgresql.jdbc.PgConnection@40497288
-2025-09-23T10:46:16.360+02:00  INFO 4924 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-45 - Start completed.
-2025-09-23T10:46:16.379+02:00  WARN 4924 --- [tasklist] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-09-23T10:46:16.383+02:00  INFO 4924 --- [tasklist] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-45)']
-	Database driver: undefined/unknown
-	Database version: 17.4
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-09-23T10:46:16.456+02:00  INFO 4924 --- [tasklist] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-23T10:46:16.519+02:00  INFO 4924 --- [tasklist] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T10:46:16.622+02:00  WARN 4924 --- [tasklist] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-23T10:46:16.801+02:00  INFO 4924 --- [tasklist] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-09-23T10:46:16.817+02:00  INFO 4924 --- [tasklist] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-09-23T10:46:16.867+02:00  INFO 4924 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-09-23T10:46:16.868+02:00  INFO 4924 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Started TasklistApplication in 1.237 seconds (process running for 2078.48)
-2025-09-23T10:46:16.868+02:00  INFO 4924 --- [tasklist] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2025-09-23T10:46:22.311+02:00  INFO 4924 --- [tasklist] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2025-09-23T10:46:22.315+02:00  INFO 4924 --- [tasklist] [Thread-180] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-09-23T10:46:22.339+02:00  INFO 4924 --- [tasklist] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-09-23T10:46:22.345+02:00  INFO 4924 --- [tasklist] [Thread-180] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T10:46:22.346+02:00  INFO 4924 --- [tasklist] [Thread-180] com.zaxxer.hikari.HikariDataSource       : HikariPool-45 - Shutdown initiated...
-2025-09-23T10:46:22.353+02:00  INFO 4924 --- [tasklist] [Thread-180] com.zaxxer.hikari.HikariDataSource       : HikariPool-45 - Shutdown completed.
-2025-09-23 10:46:22 [restartedMain] INFO 2025-09-23 10:46:22 [restartedMain] DEBUG2025-09-23 10:46:22 [restartedMain] INFO 2025-09-23 10:46:22 [restartedMain] INFO 2025-09-23 10:46:22 [restartedMain] INFO 2025-09-23 10:46:22 [restartedMain] INFO 2025-09-23 10:46:22 [restartedMain] INFO 2025-09-23 10:46:22 [restartedMain] INFO 2025-09-23 10:46:22 [restartedMain] INFO 2025-09-23 10:46:22 [restartedMain] INFO 2025-09-23 10:46:22 [restartedMain] INFO 2025-09-23 10:46:22 [restartedMain] INFO 2025-09-23 10:46:22 [restartedMain] INFO 2025-09-23 10:46:22 [restartedMain] INFO 2025-09-23 10:46:23 [restartedMain] INFO 2025-09-23 10:46:23 [restartedMain] INFO 2025-09-23 10:46:23 [restartedMain] WARN 2025-09-23 10:46:23 [restartedMain] INFO 2025-09-23 10:46:23 [restartedMain] INFO 2025-09-23 10:46:23 [restartedMain] INFO 2025-09-23 10:46:23 [restartedMain] WARN 2025-09-23 10:46:23 [restartedMain] INFO 2025-09-23 10:46:23 [restartedMain] INFO 2025-09-23 10:46:23 [restartedMain] INFO 2025-09-23 10:46:23 [restartedMain] INFO 2025-09-23 10:46:23 [restartedMain] INFO 2025-09-23 10:46:25 [File Watcher] INFO 2025-09-23 10:46:25 [Thread-184] INFO 2025-09-23 10:46:25 [tomcat-shutdown] INFO 2025-09-23 10:46:25 [Thread-184] INFO 2025-09-23 10:46:25 [Thread-184] INFO 2025-09-23 10:46:25 [Thread-184] INFO 2025-09-23 10:46:25 [restartedMain] INFO  c.api.tasklist.TasklistApplication - Starting TasklistApplication using Java 21.0.6 with PID 4924 (C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist\target\classes started by Mpho Masibigiri in C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist)
-2025-09-23 10:46:25 [restartedMain] DEBUG c.api.tasklist.TasklistApplication - Running with Spring Boot v3.5.6, Spring v6.2.11
-2025-09-23 10:46:25 [restartedMain] INFO  c.api.tasklist.TasklistApplication - No active profile set, falling back to 1 default profile: "default"
-2025-09-23 10:46:25 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-23 10:46:25 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 11 ms. Found 1 JPA repository interface.
-2025-09-23 10:46:26 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2025-09-23 10:46:26 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-09-23 10:46:26 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.46]
-2025-09-23 10:46:26 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-09-23 10:46:26 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 561 ms
-2025-09-23 10:46:26 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-23 10:46:26 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-09-23 10:46:26 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-09-23 10:46:26 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-47 - Starting...
-2025-09-23 10:46:26 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-47 - Added connection org.postgresql.jdbc.PgConnection@236344fe
-2025-09-23 10:46:26 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-47 - Start completed.
-2025-09-23 10:46:26 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-09-23 10:46:26 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-47)']
-	Database driver: undefined/unknown
-	Database version: 17.4
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-09-23 10:46:26 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-23 10:46:26 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23 10:46:26 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-23 10:46:26 [restartedMain] INFO  o.s.w.s.a.s.AnnotationActionEndpointMapping - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-09-23 10:46:26 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
-2025-09-23 10:46:26 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2025-09-23 10:46:27 [restartedMain] INFO  c.api.tasklist.TasklistApplication - Started TasklistApplication in 1.507 seconds (process running for 2088.611)
-2025-09-23 10:46:27 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
-2025-09-23 10:46:30 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2025-09-23 10:46:30 [Thread-188] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
-2025-09-23 10:46:30 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
-2025-09-23 10:46:30 [Thread-188] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23 10:46:30 [Thread-188] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-47 - Shutdown initiated...
-2025-09-23 10:46:30 [Thread-188] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-47 - Shutdown completed.
-2025-09-23 10:46:30 [restartedMain] INFO 2025-09-23 10:46:30 [restartedMain] DEBUG2025-09-23 10:46:30 [restartedMain] INFO 2025-09-23 10:46:30 [restartedMain] INFO 2025-09-23 10:46:30 [restartedMain] INFO 2025-09-23 10:46:31 [restartedMain] INFO 2025-09-23 10:46:31 [restartedMain] INFO 2025-09-23 10:46:31 [restartedMain] INFO 2025-09-23 10:46:31 [restartedMain] INFO 2025-09-23 10:46:31 [restartedMain] INFO 2025-09-23 10:46:31 [restartedMain] INFO 2025-09-23 10:46:31 [restartedMain] INFO 2025-09-23 10:46:31 [restartedMain] INFO 2025-09-23 10:46:31 [restartedMain] INFO 2025-09-23 10:46:31 [restartedMain] INFO 2025-09-23 10:46:31 [restartedMain] INFO 2025-09-23 10:46:31 [restartedMain] WARN 2025-09-23 10:46:31 [restartedMain] INFO 2025-09-23 10:46:31 [restartedMain] INFO 2025-09-23 10:46:31 [restartedMain] INFO 2025-09-23 10:46:31 [restartedMain] WARN 2025-09-23 10:46:31 [restartedMain] INFO 2025-09-23 10:46:31 [restartedMain] INFO 2025-09-23 10:46:31 [restartedMain] INFO 2025-09-23 10:46:32 [restartedMain] INFO 2025-09-23 10:46:32 [restartedMain] INFO 2025-09-23 10:46:37 [File Watcher] INFO 2025-09-23 10:46:37 [Thread-192] INFO 2025-09-23 10:46:37 [tomcat-shutdown] INFO 2025-09-23 10:46:37 [Thread-192] INFO 2025-09-23 10:46:37 [Thread-192] INFO 2025-09-23 10:46:37 [Thread-192] INFO 2025-09-23 10:46:37 [restartedMain] INFO 2025-09-23 10:46:37 [restartedMain] DEBUG2025-09-23 10:46:37 [restartedMain] INFO 2025-09-23 10:46:38 [restartedMain] INFO 2025-09-23 10:46:38 [restartedMain] INFO 2025-09-23 10:46:38 [restartedMain] INFO 2025-09-23 10:46:38 [restartedMain] INFO 2025-09-23 10:46:38 [restartedMain] INFO 2025-09-23 10:46:38 [restartedMain] INFO 2025-09-23 10:46:38 [restartedMain] INFO 2025-09-23 10:46:38 [restartedMain] INFO 2025-09-23 10:46:38 [restartedMain] INFO 2025-09-23 10:46:38 [restartedMain] INFO 2025-09-23 10:46:38 [restartedMain] INFO 2025-09-23 10:46:38 [restartedMain] INFO 2025-09-23 10:46:38 [restartedMain] INFO 2025-09-23 10:46:38 [restartedMain] WARN 2025-09-23 10:46:38 [restartedMain] INFO 2025-09-23 10:46:38 [restartedMain] INFO 2025-09-23 10:46:38 [restartedMain] INFO 2025-09-23 10:46:38 [restartedMain] WARN 2025-09-23 10:46:38 [restartedMain] INFO 2025-09-23 10:46:38 [restartedMain] INFO 2025-09-23 10:46:38 [restartedMain] INFO 2025-09-23 10:46:38 [restartedMain] INFO 2025-09-23 10:46:38 [restartedMain] INFO 2025-09-23 10:46:43 [File Watcher] INFO 2025-09-23 10:46:43 [Thread-196] INFO 2025-09-23 10:46:43 [tomcat-shutdown] INFO 2025-09-23 10:46:43 [Thread-196] INFO 2025-09-23 10:46:43 [Thread-196] INFO 2025-09-23 10:46:43 [Thread-196] INFO 2025-09-23 10:46:43 [restartedMain] INFO 2025-09-23 10:46:43 [restartedMain] DEBUG2025-09-23 10:46:43 [restartedMain] INFO 2025-09-23 10:46:43 [restartedMain] INFO 2025-09-23 10:46:44 [restartedMain] INFO 2025-09-23 10:46:44 [restartedMain] INFO 2025-09-23 10:46:44 [restartedMain] INFO 2025-09-23 10:46:44 [restartedMain] INFO 2025-09-23 10:46:44 [restartedMain] INFO 2025-09-23 10:46:44 [restartedMain] INFO 2025-09-23 10:46:44 [restartedMain] INFO 2025-09-23 10:46:44 [restartedMain] INFO 2025-09-23 10:46:44 [restartedMain] INFO 2025-09-23 10:46:44 [restartedMain] INFO 2025-09-23 10:46:44 [restartedMain] INFO 2025-09-23 10:46:44 [restartedMain] INFO 2025-09-23 10:46:44 [restartedMain] WARN 2025-09-23 10:46:44 [restartedMain] INFO 2025-09-23 10:46:44 [restartedMain] INFO 2025-09-23 10:46:44 [restartedMain] INFO 2025-09-23 10:46:44 [restartedMain] WARN 2025-09-23 10:46:44 [restartedMain] INFO 2025-09-23 10:46:44 [restartedMain] INFO 2025-09-23 10:46:44 [restartedMain] INFO 2025-09-23 10:46:44 [restartedMain] INFO 2025-09-23 10:46:44 [restartedMain] INFO 2025-09-23T10:52:39.914+02:00  INFO 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Starting TasklistApplication using Java 21.0.6 with PID 18456 (C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist\target\classes started by Mpho Masibigiri in C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist)
-2025-09-23T10:52:39.917+02:00 DEBUG 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Running with Spring Boot v3.5.6, Spring v6.2.11
-2025-09-23T10:52:39.920+02:00  INFO 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : No active profile set, falling back to 1 default profile: "default"
-2025-09-23T10:52:40.086+02:00  INFO 18456 --- [tasklist] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2025-09-23T10:52:40.087+02:00  INFO 18456 --- [tasklist] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2025-09-23T10:52:42.142+02:00  INFO 18456 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-23T10:52:42.338+02:00  INFO 18456 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 160 ms. Found 1 JPA repository interface.
-2025-09-23T10:52:44.352+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-09-23T10:52:44.396+02:00  INFO 18456 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-09-23T10:52:44.398+02:00  INFO 18456 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
-2025-09-23T10:52:44.525+02:00  INFO 18456 --- [tasklist] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-09-23T10:52:44.526+02:00  INFO 18456 --- [tasklist] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4437 ms
-2025-09-23T10:52:45.013+02:00  INFO 18456 --- [tasklist] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-23T10:52:45.153+02:00  INFO 18456 --- [tasklist] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
-2025-09-23T10:52:45.244+02:00  INFO 18456 --- [tasklist] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-09-23T10:52:45.919+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-09-23T10:52:46.007+02:00  INFO 18456 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-09-23T10:52:46.495+02:00  INFO 18456 --- [tasklist] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@34b91c4e
-2025-09-23T10:52:46.500+02:00  INFO 18456 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-09-23T10:52:46.597+02:00  WARN 18456 --- [tasklist] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-09-23T10:52:46.665+02:00  INFO 18456 --- [tasklist] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 17.4
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-09-23T10:52:48.387+02:00  INFO 18456 --- [tasklist] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-23T10:52:48.503+02:00  INFO 18456 --- [tasklist] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T10:52:49.159+02:00  WARN 18456 --- [tasklist] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-23T10:52:51.011+02:00  INFO 18456 --- [tasklist] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-09-23T10:52:51.110+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-09-23T10:52:51.218+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-09-23T10:52:51.240+02:00  INFO 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Started TasklistApplication in 12.471 seconds (process running for 13.746)
-2025-09-23T10:53:21.633+02:00  INFO 18456 --- [tasklist] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-09-23T10:53:21.635+02:00  INFO 18456 --- [tasklist] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-09-23T10:53:21.640+02:00  INFO 18456 --- [tasklist] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
-2025-09-23T10:53:21.871+02:00  INFO 18456 --- [tasklist] [http-nio-8080-exec-1] c.a.tasklist.controller.TaskController   : Fetching all tasks
-2025-09-23T10:54:45.886+02:00  INFO 18456 --- [tasklist] [http-nio-8080-exec-4] c.a.tasklist.controller.TaskController   : Fetching all tasks
-2025-09-23T10:55:07.290+02:00  INFO 18456 --- [tasklist] [http-nio-8080-exec-5] c.a.tasklist.controller.TaskController   : Task id 2 has been marked as Completed.
-2025-09-23T10:56:50.697+02:00  INFO 18456 --- [tasklist] [http-nio-8080-exec-8] c.a.tasklist.controller.TaskController   : Task id 2 has been marked as Uncompleted.
-2025-09-23T10:57:41.247+02:00  INFO 18456 --- [tasklist] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2025-09-23T10:57:41.269+02:00  INFO 18456 --- [tasklist] [Thread-5] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-09-23T10:57:41.388+02:00  INFO 18456 --- [tasklist] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-09-23T10:57:41.412+02:00  INFO 18456 --- [tasklist] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T10:57:41.428+02:00  INFO 18456 --- [tasklist] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-09-23T10:57:41.444+02:00  INFO 18456 --- [tasklist] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-09-23T10:57:41.934+02:00  INFO 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Starting TasklistApplication using Java 21.0.6 with PID 18456 (C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist\target\classes started by Mpho Masibigiri in C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist)
-2025-09-23T10:57:41.936+02:00 DEBUG 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Running with Spring Boot v3.5.6, Spring v6.2.11
-2025-09-23T10:57:41.938+02:00  INFO 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : No active profile set, falling back to 1 default profile: "default"
-2025-09-23T10:57:42.841+02:00  INFO 18456 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-23T10:57:42.884+02:00  INFO 18456 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 1 JPA repository interface.
-2025-09-23T10:57:43.363+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-09-23T10:57:43.366+02:00  INFO 18456 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-09-23T10:57:43.367+02:00  INFO 18456 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
-2025-09-23T10:57:43.429+02:00  INFO 18456 --- [tasklist] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-09-23T10:57:43.430+02:00  INFO 18456 --- [tasklist] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1479 ms
-2025-09-23T10:57:43.586+02:00  INFO 18456 --- [tasklist] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-23T10:57:43.600+02:00  INFO 18456 --- [tasklist] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-09-23T10:57:43.628+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-09-23T10:57:43.630+02:00  INFO 18456 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2025-09-23T10:57:43.787+02:00  INFO 18456 --- [tasklist] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@27ca68a2
-2025-09-23T10:57:43.788+02:00  INFO 18456 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2025-09-23T10:57:43.817+02:00  WARN 18456 --- [tasklist] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-09-23T10:57:43.824+02:00  INFO 18456 --- [tasklist] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
-	Database driver: undefined/unknown
-	Database version: 17.4
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-09-23T10:57:44.008+02:00  INFO 18456 --- [tasklist] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-23T10:57:44.071+02:00  INFO 18456 --- [tasklist] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T10:57:44.469+02:00  WARN 18456 --- [tasklist] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-23T10:57:45.786+02:00  INFO 18456 --- [tasklist] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-09-23T10:57:45.847+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-09-23T10:57:45.890+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-09-23T10:57:45.907+02:00  INFO 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Started TasklistApplication in 4.255 seconds (process running for 308.414)
-2025-09-23T10:57:45.928+02:00  INFO 18456 --- [tasklist] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2025-09-23T10:57:50.363+02:00  INFO 18456 --- [tasklist] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2025-09-23T10:57:50.366+02:00  INFO 18456 --- [tasklist] [Thread-7] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-09-23T10:57:50.389+02:00  INFO 18456 --- [tasklist] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-09-23T10:57:50.400+02:00  INFO 18456 --- [tasklist] [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T10:57:50.402+02:00  INFO 18456 --- [tasklist] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
-2025-09-23T10:57:50.413+02:00  INFO 18456 --- [tasklist] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
-2025-09-23T10:57:50.893+02:00  INFO 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Starting TasklistApplication using Java 21.0.6 with PID 18456 (C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist\target\classes started by Mpho Masibigiri in C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist)
-2025-09-23T10:57:50.899+02:00 DEBUG 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Running with Spring Boot v3.5.6, Spring v6.2.11
-2025-09-23T10:57:50.903+02:00  INFO 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : No active profile set, falling back to 1 default profile: "default"
-2025-09-23T10:57:52.075+02:00  INFO 18456 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-23T10:57:52.133+02:00  INFO 18456 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 1 JPA repository interface.
-2025-09-23T10:57:52.548+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-09-23T10:57:52.553+02:00  INFO 18456 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-09-23T10:57:52.553+02:00  INFO 18456 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
-2025-09-23T10:57:52.642+02:00  INFO 18456 --- [tasklist] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-09-23T10:57:52.647+02:00  INFO 18456 --- [tasklist] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1723 ms
-2025-09-23T10:57:52.751+02:00  INFO 18456 --- [tasklist] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-23T10:57:52.758+02:00  INFO 18456 --- [tasklist] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-09-23T10:57:52.791+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-09-23T10:57:52.795+02:00  INFO 18456 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
-2025-09-23T10:57:52.965+02:00  INFO 18456 --- [tasklist] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection org.postgresql.jdbc.PgConnection@650f7d1d
-2025-09-23T10:57:52.967+02:00  INFO 18456 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
-2025-09-23T10:57:52.994+02:00  WARN 18456 --- [tasklist] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-09-23T10:57:52.998+02:00  INFO 18456 --- [tasklist] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
-	Database driver: undefined/unknown
-	Database version: 17.4
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-09-23T10:57:53.123+02:00  INFO 18456 --- [tasklist] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-23T10:57:53.198+02:00  INFO 18456 --- [tasklist] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T10:57:53.432+02:00  WARN 18456 --- [tasklist] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-23T10:57:53.932+02:00  INFO 18456 --- [tasklist] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-09-23T10:57:53.953+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-09-23T10:57:53.989+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-09-23T10:57:54.005+02:00  INFO 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Started TasklistApplication in 3.328 seconds (process running for 316.512)
-2025-09-23T10:57:54.011+02:00  INFO 18456 --- [tasklist] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2025-09-23T10:57:56.446+02:00  INFO 18456 --- [tasklist] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2025-09-23T10:57:56.452+02:00  INFO 18456 --- [tasklist] [Thread-11] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-09-23T10:57:56.477+02:00  INFO 18456 --- [tasklist] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-09-23T10:57:56.483+02:00  INFO 18456 --- [tasklist] [Thread-11] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T10:57:56.485+02:00  INFO 18456 --- [tasklist] [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
-2025-09-23T10:57:56.491+02:00  INFO 18456 --- [tasklist] [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
-2025-09-23T10:57:56.804+02:00  INFO 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Starting TasklistApplication using Java 21.0.6 with PID 18456 (C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist\target\classes started by Mpho Masibigiri in C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist)
-2025-09-23T10:57:56.806+02:00 DEBUG 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Running with Spring Boot v3.5.6, Spring v6.2.11
-2025-09-23T10:57:56.807+02:00  INFO 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : No active profile set, falling back to 1 default profile: "default"
-2025-09-23T10:57:57.584+02:00  INFO 18456 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-23T10:57:57.607+02:00  INFO 18456 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 1 JPA repository interface.
-2025-09-23T10:57:57.895+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-09-23T10:57:57.901+02:00  INFO 18456 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-09-23T10:57:57.906+02:00  INFO 18456 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
-2025-09-23T10:57:57.975+02:00  INFO 18456 --- [tasklist] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-09-23T10:57:57.981+02:00  INFO 18456 --- [tasklist] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1167 ms
-2025-09-23T10:57:58.078+02:00  INFO 18456 --- [tasklist] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-23T10:57:58.087+02:00  INFO 18456 --- [tasklist] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-09-23T10:57:58.158+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-09-23T10:57:58.161+02:00  INFO 18456 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
-2025-09-23T10:57:58.388+02:00  INFO 18456 --- [tasklist] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection org.postgresql.jdbc.PgConnection@5edf49d8
-2025-09-23T10:57:58.409+02:00  INFO 18456 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
-2025-09-23T10:57:58.427+02:00  WARN 18456 --- [tasklist] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-09-23T10:57:58.431+02:00  INFO 18456 --- [tasklist] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-4)']
-	Database driver: undefined/unknown
-	Database version: 17.4
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-09-23T10:57:58.519+02:00  INFO 18456 --- [tasklist] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-23T10:57:58.578+02:00  INFO 18456 --- [tasklist] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T10:57:58.726+02:00  WARN 18456 --- [tasklist] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-23T10:57:59.040+02:00  INFO 18456 --- [tasklist] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-09-23T10:57:59.063+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-09-23T10:57:59.092+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-09-23T10:57:59.100+02:00  INFO 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Started TasklistApplication in 2.404 seconds (process running for 321.606)
-2025-09-23T10:57:59.104+02:00  INFO 18456 --- [tasklist] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2025-09-23T10:58:31.083+02:00  INFO 18456 --- [tasklist] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2025-09-23T10:58:31.095+02:00  INFO 18456 --- [tasklist] [Thread-15] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-09-23T10:58:31.159+02:00  INFO 18456 --- [tasklist] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-09-23T10:58:31.180+02:00  INFO 18456 --- [tasklist] [Thread-15] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T10:58:31.183+02:00  INFO 18456 --- [tasklist] [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
-2025-09-23T10:58:31.228+02:00  INFO 18456 --- [tasklist] [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
-2025-09-23T10:58:31.470+02:00  INFO 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Starting TasklistApplication using Java 21.0.6 with PID 18456 (C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist\target\classes started by Mpho Masibigiri in C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist)
-2025-09-23T10:58:31.473+02:00 DEBUG 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Running with Spring Boot v3.5.6, Spring v6.2.11
-2025-09-23T10:58:31.473+02:00  INFO 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : No active profile set, falling back to 1 default profile: "default"
-2025-09-23T10:58:31.915+02:00  INFO 18456 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-23T10:58:31.950+02:00  INFO 18456 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 1 JPA repository interface.
-2025-09-23T10:58:32.171+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-09-23T10:58:32.173+02:00  INFO 18456 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-09-23T10:58:32.174+02:00  INFO 18456 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
-2025-09-23T10:58:32.225+02:00  INFO 18456 --- [tasklist] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-09-23T10:58:32.226+02:00  INFO 18456 --- [tasklist] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 746 ms
-2025-09-23T10:58:32.321+02:00  INFO 18456 --- [tasklist] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-23T10:58:32.327+02:00  INFO 18456 --- [tasklist] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-09-23T10:58:32.343+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-09-23T10:58:32.345+02:00  INFO 18456 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
-2025-09-23T10:58:32.454+02:00  INFO 18456 --- [tasklist] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection org.postgresql.jdbc.PgConnection@6433bc32
-2025-09-23T10:58:32.489+02:00  INFO 18456 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
-2025-09-23T10:58:32.498+02:00  WARN 18456 --- [tasklist] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-09-23T10:58:32.498+02:00  INFO 18456 --- [tasklist] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-5)']
-	Database driver: undefined/unknown
-	Database version: 17.4
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-09-23T10:58:32.588+02:00  INFO 18456 --- [tasklist] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-23T10:58:32.655+02:00  INFO 18456 --- [tasklist] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T10:58:32.820+02:00  WARN 18456 --- [tasklist] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-23T10:58:33.270+02:00  INFO 18456 --- [tasklist] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-09-23T10:58:33.289+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-09-23T10:58:33.325+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-09-23T10:58:33.331+02:00  INFO 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Started TasklistApplication in 1.934 seconds (process running for 355.838)
-2025-09-23T10:58:33.334+02:00  INFO 18456 --- [tasklist] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2025-09-23T10:58:37.778+02:00  INFO 18456 --- [tasklist] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2025-09-23T10:58:37.781+02:00  INFO 18456 --- [tasklist] [Thread-19] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-09-23T10:58:37.813+02:00  INFO 18456 --- [tasklist] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-09-23T10:58:37.820+02:00  INFO 18456 --- [tasklist] [Thread-19] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T10:58:37.822+02:00  INFO 18456 --- [tasklist] [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
-2025-09-23T10:58:37.834+02:00  INFO 18456 --- [tasklist] [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
-2025-09-23T10:58:38.033+02:00  INFO 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Starting TasklistApplication using Java 21.0.6 with PID 18456 (C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist\target\classes started by Mpho Masibigiri in C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist)
-2025-09-23T10:58:38.035+02:00 DEBUG 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Running with Spring Boot v3.5.6, Spring v6.2.11
-2025-09-23T10:58:38.037+02:00  INFO 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : No active profile set, falling back to 1 default profile: "default"
-2025-09-23T10:58:38.584+02:00  INFO 18456 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-23T10:58:38.604+02:00  INFO 18456 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 1 JPA repository interface.
-2025-09-23T10:58:38.838+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-09-23T10:58:38.841+02:00  INFO 18456 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-09-23T10:58:38.841+02:00  INFO 18456 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
-2025-09-23T10:58:38.882+02:00  INFO 18456 --- [tasklist] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-09-23T10:58:38.883+02:00  INFO 18456 --- [tasklist] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 840 ms
-2025-09-23T10:58:39.076+02:00  INFO 18456 --- [tasklist] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-23T10:58:39.087+02:00  INFO 18456 --- [tasklist] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-09-23T10:58:39.136+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-09-23T10:58:39.152+02:00  INFO 18456 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
-2025-09-23T10:58:39.463+02:00  INFO 18456 --- [tasklist] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection org.postgresql.jdbc.PgConnection@1e08b3af
-2025-09-23T10:58:39.466+02:00  INFO 18456 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
-2025-09-23T10:58:39.494+02:00  WARN 18456 --- [tasklist] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-09-23T10:58:39.500+02:00  INFO 18456 --- [tasklist] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-6)']
-	Database driver: undefined/unknown
-	Database version: 17.4
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-09-23T10:58:39.691+02:00  INFO 18456 --- [tasklist] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-23T10:58:39.768+02:00  INFO 18456 --- [tasklist] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T10:58:39.916+02:00  WARN 18456 --- [tasklist] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-23T10:58:40.203+02:00  INFO 18456 --- [tasklist] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-09-23T10:58:40.219+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-09-23T10:58:40.245+02:00  INFO 18456 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-09-23T10:58:40.250+02:00  INFO 18456 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Started TasklistApplication in 2.275 seconds (process running for 362.757)
-2025-09-23T10:58:40.253+02:00  INFO 18456 --- [tasklist] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2025-09-23T11:13:37.439+02:00  INFO 7900 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Starting TasklistApplication using Java 21.0.6 with PID 7900 (C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist\target\classes started by Mpho Masibigiri in C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist)
-2025-09-23T11:13:37.442+02:00 DEBUG 7900 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Running with Spring Boot v3.5.6, Spring v6.2.11
-2025-09-23T11:13:37.443+02:00  INFO 7900 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : No active profile set, falling back to 1 default profile: "default"
-2025-09-23T11:13:37.508+02:00  INFO 7900 --- [tasklist] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2025-09-23T11:13:37.509+02:00  INFO 7900 --- [tasklist] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2025-09-23T11:13:38.374+02:00  INFO 7900 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-23T11:13:38.452+02:00  INFO 7900 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 66 ms. Found 1 JPA repository interface.
-2025-09-23T11:13:39.243+02:00  INFO 7900 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-09-23T11:13:39.261+02:00  INFO 7900 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-09-23T11:13:39.262+02:00  INFO 7900 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
-2025-09-23T11:13:39.315+02:00  INFO 7900 --- [tasklist] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-09-23T11:13:39.316+02:00  INFO 7900 --- [tasklist] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1807 ms
-2025-09-23T11:13:39.529+02:00  INFO 7900 --- [tasklist] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-23T11:13:39.600+02:00  INFO 7900 --- [tasklist] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
-2025-09-23T11:13:39.639+02:00  INFO 7900 --- [tasklist] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-09-23T11:13:39.947+02:00  INFO 7900 --- [tasklist] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-09-23T11:13:39.982+02:00  INFO 7900 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-09-23T11:13:40.338+02:00  INFO 7900 --- [tasklist] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2bb0caa4
-2025-09-23T11:13:40.340+02:00  INFO 7900 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-09-23T11:13:40.386+02:00  WARN 7900 --- [tasklist] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-09-23T11:13:40.418+02:00  INFO 7900 --- [tasklist] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 17.4
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-09-23T11:13:41.233+02:00  INFO 7900 --- [tasklist] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-23T11:13:41.289+02:00  INFO 7900 --- [tasklist] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T11:13:41.581+02:00  WARN 7900 --- [tasklist] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-23T11:13:42.467+02:00  INFO 7900 --- [tasklist] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-09-23T11:13:42.512+02:00  INFO 7900 --- [tasklist] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-09-23T11:13:42.561+02:00  INFO 7900 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-09-23T11:13:42.575+02:00  INFO 7900 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Started TasklistApplication in 5.638 seconds (process running for 6.129)
-2025-09-23T11:14:03.826+02:00  INFO 7900 --- [tasklist] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-09-23T11:14:03.826+02:00  INFO 7900 --- [tasklist] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-09-23T11:14:03.826+02:00  INFO 7900 --- [tasklist] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2025-09-23T11:14:03.927+02:00  INFO 7900 --- [tasklist] [http-nio-8080-exec-1] c.a.tasklist.controller.TaskController   : Fetching completed tasks
-2025-09-23T11:14:04.117+02:00 DEBUG 7900 --- [tasklist] [http-nio-8080-exec-1] c.a.tasklist.controller.TaskController   : Found 1 completed tasks
-2025-09-23T11:17:37.344+02:00  INFO 19872 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Starting TasklistApplication using Java 21.0.6 with PID 19872 (C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist\target\classes started by Mpho Masibigiri in C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist)
-2025-09-23T11:17:37.346+02:00 DEBUG 19872 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Running with Spring Boot v3.5.6, Spring v6.2.11
-2025-09-23T11:17:37.347+02:00  INFO 19872 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : No active profile set, falling back to 1 default profile: "default"
-2025-09-23T11:17:37.407+02:00  INFO 19872 --- [tasklist] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2025-09-23T11:17:37.408+02:00  INFO 19872 --- [tasklist] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2025-09-23T11:17:38.281+02:00  INFO 19872 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-23T11:17:38.344+02:00  INFO 19872 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 53 ms. Found 1 JPA repository interface.
-2025-09-23T11:17:39.110+02:00  INFO 19872 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-09-23T11:17:39.129+02:00  INFO 19872 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-09-23T11:17:39.130+02:00  INFO 19872 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
-2025-09-23T11:17:39.192+02:00  INFO 19872 --- [tasklist] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-09-23T11:17:39.193+02:00  INFO 19872 --- [tasklist] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1784 ms
-2025-09-23T11:17:39.489+02:00  INFO 19872 --- [tasklist] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-23T11:17:39.544+02:00  INFO 19872 --- [tasklist] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
-2025-09-23T11:17:39.579+02:00  INFO 19872 --- [tasklist] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-09-23T11:17:39.847+02:00  INFO 19872 --- [tasklist] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-09-23T11:17:39.881+02:00  INFO 19872 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-09-23T11:17:40.105+02:00  INFO 19872 --- [tasklist] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@185503a8
-2025-09-23T11:17:40.107+02:00  INFO 19872 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-09-23T11:17:40.146+02:00  WARN 19872 --- [tasklist] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-09-23T11:17:40.169+02:00  INFO 19872 --- [tasklist] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 17.4
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-09-23T11:17:40.911+02:00  INFO 19872 --- [tasklist] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-23T11:17:40.974+02:00  INFO 19872 --- [tasklist] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T11:17:41.272+02:00  WARN 19872 --- [tasklist] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-23T11:17:42.130+02:00  INFO 19872 --- [tasklist] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-09-23T11:17:42.177+02:00  INFO 19872 --- [tasklist] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-09-23T11:17:42.224+02:00  INFO 19872 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-09-23T11:17:42.237+02:00  INFO 19872 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Started TasklistApplication in 5.413 seconds (process running for 5.957)
-2025-09-23T11:17:55.216+02:00  INFO 19872 --- [tasklist] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-09-23T11:17:55.216+02:00  INFO 19872 --- [tasklist] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-09-23T11:17:55.217+02:00  INFO 19872 --- [tasklist] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-09-23T11:17:55.289+02:00  INFO 19872 --- [tasklist] [http-nio-8080-exec-1] c.a.tasklist.controller.TaskController   : Fetching all tasks
-2025-09-23T11:18:06.687+02:00  WARN 19872 --- [tasklist] [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.data.rest.webmvc.ResourceNotFoundException: EntityRepresentationModel not found]
-2025-09-23T11:20:28.509+02:00  INFO 8696 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Starting TasklistApplication using Java 21.0.6 with PID 8696 (C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist\target\classes started by Mpho Masibigiri in C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist)
-2025-09-23T11:20:28.513+02:00 DEBUG 8696 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Running with Spring Boot v3.5.6, Spring v6.2.11
-2025-09-23T11:20:28.514+02:00  INFO 8696 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : No active profile set, falling back to 1 default profile: "default"
-2025-09-23T11:20:28.591+02:00  INFO 8696 --- [tasklist] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2025-09-23T11:20:28.591+02:00  INFO 8696 --- [tasklist] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2025-09-23T11:20:29.665+02:00  INFO 8696 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-23T11:20:29.751+02:00  INFO 8696 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 70 ms. Found 1 JPA repository interface.
-2025-09-23T11:20:30.546+02:00  INFO 8696 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-09-23T11:20:30.563+02:00  INFO 8696 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-09-23T11:20:30.563+02:00  INFO 8696 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
-2025-09-23T11:20:30.619+02:00  INFO 8696 --- [tasklist] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-09-23T11:20:30.620+02:00  INFO 8696 --- [tasklist] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2028 ms
-2025-09-23T11:20:30.852+02:00  INFO 8696 --- [tasklist] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-23T11:20:30.906+02:00  INFO 8696 --- [tasklist] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
-2025-09-23T11:20:30.940+02:00  INFO 8696 --- [tasklist] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-09-23T11:20:31.219+02:00  INFO 8696 --- [tasklist] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-09-23T11:20:31.253+02:00  INFO 8696 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-09-23T11:20:31.493+02:00  INFO 8696 --- [tasklist] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2540a416
-2025-09-23T11:20:31.496+02:00  INFO 8696 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-09-23T11:20:31.543+02:00  WARN 8696 --- [tasklist] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-09-23T11:20:31.569+02:00  INFO 8696 --- [tasklist] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 17.4
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-09-23T11:20:32.310+02:00  INFO 8696 --- [tasklist] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-23T11:20:32.367+02:00  INFO 8696 --- [tasklist] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T11:20:32.663+02:00  WARN 8696 --- [tasklist] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-23T11:20:33.506+02:00  INFO 8696 --- [tasklist] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-09-23T11:20:33.557+02:00  INFO 8696 --- [tasklist] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-09-23T11:20:33.604+02:00  INFO 8696 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-09-23T11:20:33.617+02:00  INFO 8696 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Started TasklistApplication in 5.653 seconds (process running for 6.197)
-2025-09-23T11:20:42.719+02:00  INFO 8696 --- [tasklist] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-09-23T11:20:42.720+02:00  INFO 8696 --- [tasklist] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-09-23T11:20:42.723+02:00  INFO 8696 --- [tasklist] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2025-09-23T11:20:42.814+02:00  INFO 8696 --- [tasklist] [http-nio-8080-exec-3] c.a.tasklist.controller.TaskController   : Fetching task with ID: 2
-2025-09-23T11:20:42.910+02:00 DEBUG 8696 --- [tasklist] [http-nio-8080-exec-3] c.a.tasklist.controller.TaskController   : Task found: Task(id=2, name=Task 2, status=uncompleted, due_Date=2025-09-26)
-2025-09-23T11:21:18.735+02:00  INFO 8696 --- [tasklist] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2025-09-23T11:21:18.741+02:00  INFO 8696 --- [tasklist] [Thread-5] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-09-23T11:21:18.757+02:00  INFO 8696 --- [tasklist] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-09-23T11:21:18.763+02:00  INFO 8696 --- [tasklist] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T11:21:18.767+02:00  INFO 8696 --- [tasklist] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-09-23T11:21:18.779+02:00  INFO 8696 --- [tasklist] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-09-23T11:21:18.912+02:00  INFO 8696 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Starting TasklistApplication using Java 21.0.6 with PID 8696 (C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist\target\classes started by Mpho Masibigiri in C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist)
-2025-09-23T11:21:18.912+02:00 DEBUG 8696 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Running with Spring Boot v3.5.6, Spring v6.2.11
-2025-09-23T11:21:18.912+02:00  INFO 8696 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : No active profile set, falling back to 1 default profile: "default"
-2025-09-23T11:21:19.182+02:00  INFO 8696 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-23T11:21:19.197+02:00  INFO 8696 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 1 JPA repository interface.
-2025-09-23T11:21:19.327+02:00  INFO 8696 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-09-23T11:21:19.329+02:00  INFO 8696 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-09-23T11:21:19.329+02:00  INFO 8696 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
-2025-09-23T11:21:19.353+02:00  INFO 8696 --- [tasklist] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-09-23T11:21:19.354+02:00  INFO 8696 --- [tasklist] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 438 ms
-2025-09-23T11:21:19.412+02:00  INFO 8696 --- [tasklist] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-23T11:21:19.416+02:00  INFO 8696 --- [tasklist] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-09-23T11:21:19.429+02:00  INFO 8696 --- [tasklist] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-09-23T11:21:19.430+02:00  INFO 8696 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2025-09-23T11:21:19.587+02:00  INFO 8696 --- [tasklist] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@7c723fc0
-2025-09-23T11:21:19.588+02:00  INFO 8696 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2025-09-23T11:21:19.596+02:00  WARN 8696 --- [tasklist] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-09-23T11:21:19.598+02:00  INFO 8696 --- [tasklist] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
-	Database driver: undefined/unknown
-	Database version: 17.4
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-09-23T11:21:19.642+02:00  INFO 8696 --- [tasklist] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-23T11:21:19.664+02:00  INFO 8696 --- [tasklist] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T11:21:19.734+02:00  WARN 8696 --- [tasklist] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-23T11:21:20.013+02:00  INFO 8696 --- [tasklist] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-09-23T11:21:20.028+02:00  INFO 8696 --- [tasklist] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-09-23T11:21:20.054+02:00  INFO 8696 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-09-23T11:21:20.059+02:00  INFO 8696 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Started TasklistApplication in 1.196 seconds (process running for 52.639)
-2025-09-23T11:21:20.063+02:00  INFO 8696 --- [tasklist] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2025-09-23T11:27:25.042+02:00  INFO 4080 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Starting TasklistApplication using Java 21.0.6 with PID 4080 (C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist\target\classes started by Mpho Masibigiri in C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist)
-2025-09-23T11:27:25.046+02:00 DEBUG 4080 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Running with Spring Boot v3.5.6, Spring v6.2.11
-2025-09-23T11:27:25.047+02:00  INFO 4080 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : No active profile set, falling back to 1 default profile: "default"
-2025-09-23T11:27:25.108+02:00  INFO 4080 --- [tasklist] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2025-09-23T11:27:25.108+02:00  INFO 4080 --- [tasklist] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2025-09-23T11:27:26.031+02:00  INFO 4080 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-23T11:27:26.097+02:00  INFO 4080 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 1 JPA repository interface.
-2025-09-23T11:27:26.979+02:00  INFO 4080 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-09-23T11:27:26.999+02:00  INFO 4080 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-09-23T11:27:27.002+02:00  INFO 4080 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
-2025-09-23T11:27:27.052+02:00  INFO 4080 --- [tasklist] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-09-23T11:27:27.053+02:00  INFO 4080 --- [tasklist] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1944 ms
-2025-09-23T11:27:27.328+02:00  INFO 4080 --- [tasklist] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-23T11:27:27.398+02:00  INFO 4080 --- [tasklist] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
-2025-09-23T11:27:27.442+02:00  INFO 4080 --- [tasklist] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-09-23T11:27:27.807+02:00  INFO 4080 --- [tasklist] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-09-23T11:27:27.840+02:00  INFO 4080 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-09-23T11:27:28.070+02:00  INFO 4080 --- [tasklist] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7547e5a3
-2025-09-23T11:27:28.073+02:00  INFO 4080 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-09-23T11:27:28.116+02:00  WARN 4080 --- [tasklist] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-09-23T11:27:28.149+02:00  INFO 4080 --- [tasklist] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 17.4
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-09-23T11:27:29.006+02:00  INFO 4080 --- [tasklist] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-23T11:27:29.078+02:00  INFO 4080 --- [tasklist] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T11:27:29.402+02:00  WARN 4080 --- [tasklist] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-23T11:27:30.347+02:00  INFO 4080 --- [tasklist] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-09-23T11:27:30.404+02:00  INFO 4080 --- [tasklist] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-09-23T11:27:30.450+02:00  INFO 4080 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-09-23T11:27:30.462+02:00  INFO 4080 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Started TasklistApplication in 5.991 seconds (process running for 6.51)
-2025-09-23T11:28:02.338+02:00  INFO 4080 --- [tasklist] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-09-23T11:28:02.339+02:00  INFO 4080 --- [tasklist] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-09-23T11:28:02.341+02:00  INFO 4080 --- [tasklist] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-09-23T11:28:02.447+02:00  INFO 4080 --- [tasklist] [http-nio-8080-exec-1] c.a.tasklist.controller.TaskController   : Adding new task: Task 5 with due date: 2025-09-30
-2025-09-23T11:28:02.581+02:00 DEBUG 4080 --- [tasklist] [http-nio-8080-exec-1] c.a.tasklist.controller.TaskController   : Task successfully added: Task(id=5, name=Task 5, status=uncompleted, due_Date=2025-09-30)
-2025-09-23T11:29:01.267+02:00  INFO 4080 --- [tasklist] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2025-09-23T11:29:01.281+02:00  INFO 4080 --- [tasklist] [Thread-5] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-09-23T11:29:01.294+02:00  INFO 4080 --- [tasklist] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-09-23T11:29:01.301+02:00  INFO 4080 --- [tasklist] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T11:29:01.307+02:00  INFO 4080 --- [tasklist] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-09-23T11:29:01.314+02:00  INFO 4080 --- [tasklist] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-09-23T11:29:01.450+02:00  INFO 4080 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Starting TasklistApplication using Java 21.0.6 with PID 4080 (C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist\target\classes started by Mpho Masibigiri in C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist)
-2025-09-23T11:29:01.451+02:00 DEBUG 4080 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Running with Spring Boot v3.5.6, Spring v6.2.11
-2025-09-23T11:29:01.451+02:00  INFO 4080 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : No active profile set, falling back to 1 default profile: "default"
-2025-09-23T11:29:01.965+02:00  INFO 4080 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-23T11:29:01.987+02:00  INFO 4080 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 1 JPA repository interface.
-2025-09-23T11:29:02.379+02:00  INFO 4080 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-09-23T11:29:02.413+02:00  INFO 4080 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-09-23T11:29:02.456+02:00  INFO 4080 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
-2025-09-23T11:29:02.510+02:00  INFO 4080 --- [tasklist] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-09-23T11:29:02.522+02:00  INFO 4080 --- [tasklist] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1066 ms
-2025-09-23T11:29:02.645+02:00  INFO 4080 --- [tasklist] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-23T11:29:02.650+02:00  INFO 4080 --- [tasklist] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-09-23T11:29:02.678+02:00  INFO 4080 --- [tasklist] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-09-23T11:29:02.695+02:00  INFO 4080 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2025-09-23T11:29:02.824+02:00  INFO 4080 --- [tasklist] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@30d895d0
-2025-09-23T11:29:02.826+02:00  INFO 4080 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2025-09-23T11:29:02.838+02:00  WARN 4080 --- [tasklist] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-09-23T11:29:02.842+02:00  INFO 4080 --- [tasklist] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
-	Database driver: undefined/unknown
-	Database version: 17.4
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-09-23T11:29:02.957+02:00  INFO 4080 --- [tasklist] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-23T11:29:02.989+02:00  INFO 4080 --- [tasklist] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T11:29:03.131+02:00  WARN 4080 --- [tasklist] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-23T11:29:03.489+02:00  INFO 4080 --- [tasklist] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-09-23T11:29:03.515+02:00  INFO 4080 --- [tasklist] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-09-23T11:29:03.534+02:00  INFO 4080 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-09-23T11:29:03.543+02:00  INFO 4080 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Started TasklistApplication in 2.145 seconds (process running for 99.591)
-2025-09-23T11:29:03.552+02:00  INFO 4080 --- [tasklist] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2025-09-23T11:29:04.930+02:00  INFO 4080 --- [tasklist] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2025-09-23T11:29:04.932+02:00  INFO 4080 --- [tasklist] [Thread-7] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-09-23T11:29:04.943+02:00  INFO 4080 --- [tasklist] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-09-23T11:29:04.946+02:00  INFO 4080 --- [tasklist] [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T11:29:04.948+02:00  INFO 4080 --- [tasklist] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
-2025-09-23T11:29:04.955+02:00  INFO 4080 --- [tasklist] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
-2025-09-23T11:29:05.085+02:00  INFO 4080 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Starting TasklistApplication using Java 21.0.6 with PID 4080 (C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist\target\classes started by Mpho Masibigiri in C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist)
-2025-09-23T11:29:05.086+02:00 DEBUG 4080 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Running with Spring Boot v3.5.6, Spring v6.2.11
-2025-09-23T11:29:05.086+02:00  INFO 4080 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : No active profile set, falling back to 1 default profile: "default"
-2025-09-23T11:29:05.327+02:00  INFO 4080 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-23T11:29:05.338+02:00  INFO 4080 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 1 JPA repository interface.
-2025-09-23T11:29:05.424+02:00  INFO 4080 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-09-23T11:29:05.426+02:00  INFO 4080 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-09-23T11:29:05.426+02:00  INFO 4080 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
-2025-09-23T11:29:05.443+02:00  INFO 4080 --- [tasklist] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-09-23T11:29:05.443+02:00  INFO 4080 --- [tasklist] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 353 ms
-2025-09-23T11:29:05.477+02:00  INFO 4080 --- [tasklist] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-23T11:29:05.479+02:00  INFO 4080 --- [tasklist] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-09-23T11:29:05.486+02:00  INFO 4080 --- [tasklist] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-09-23T11:29:05.486+02:00  INFO 4080 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
-2025-09-23T11:29:05.536+02:00  INFO 4080 --- [tasklist] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection org.postgresql.jdbc.PgConnection@7449747b
-2025-09-23T11:29:05.536+02:00  INFO 4080 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
-2025-09-23T11:29:05.544+02:00  WARN 4080 --- [tasklist] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-09-23T11:29:05.546+02:00  INFO 4080 --- [tasklist] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
-	Database driver: undefined/unknown
-	Database version: 17.4
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-09-23T11:29:05.581+02:00  INFO 4080 --- [tasklist] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-23T11:29:05.599+02:00  INFO 4080 --- [tasklist] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-23T11:29:05.667+02:00  WARN 4080 --- [tasklist] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-23T11:29:05.817+02:00  INFO 4080 --- [tasklist] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-09-23T11:29:05.826+02:00  INFO 4080 --- [tasklist] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-09-23T11:29:05.835+02:00  INFO 4080 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-09-23T11:29:05.838+02:00  INFO 4080 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Started TasklistApplication in 0.807 seconds (process running for 101.886)
-2025-09-23T11:29:05.840+02:00  INFO 4080 --- [tasklist] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-09-25T00:06:16.868+02:00  WARN 13192 --- [tasklist] [HikariPool-2:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=2h28m38s847ms242µs200ns).
+2025-09-25T00:11:47.426+02:00  INFO 13192 --- [tasklist] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 3 class path changes (0 additions, 3 deletions, 0 modifications)
+2025-09-25T00:11:47.444+02:00  INFO 13192 --- [tasklist] [Thread-8] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-25T00:11:47.484+02:00  INFO 13192 --- [tasklist] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-25T00:11:47.540+02:00  INFO 13192 --- [tasklist] [Thread-8] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-25T00:11:47.560+02:00  INFO 13192 --- [tasklist] [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-09-25T00:11:47.582+02:00  INFO 13192 --- [tasklist] [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-09-25T00:11:48.009+02:00  INFO 13192 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Starting TasklistApplication using Java 21.0.6 with PID 13192 (C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist\target\classes started by Mpho Masibigiri in C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist)
+2025-09-25T00:11:48.011+02:00 DEBUG 13192 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Running with Spring Boot v3.5.6, Spring v6.2.11
+2025-09-25T00:11:48.011+02:00  INFO 13192 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-09-25T00:11:48.902+02:00  INFO 13192 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-25T00:11:48.930+02:00  INFO 13192 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 1 JPA repository interface.
+2025-09-25T00:11:49.234+02:00  INFO 13192 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-09-25T00:11:49.241+02:00  INFO 13192 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-25T00:11:49.242+02:00  INFO 13192 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-09-25T00:11:49.305+02:00  INFO 13192 --- [tasklist] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-25T00:11:49.306+02:00  INFO 13192 --- [tasklist] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1286 ms
+2025-09-25T00:11:49.435+02:00  INFO 13192 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2025-09-25T00:11:49.613+02:00  INFO 13192 --- [tasklist] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection org.postgresql.jdbc.PgConnection@5d64e070
+2025-09-25T00:11:49.615+02:00  INFO 13192 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2025-09-25T00:11:49.669+02:00  INFO 13192 --- [tasklist] [restartedMain] liquibase.database                       : Set default schema name to public
+2025-09-25T00:11:49.714+02:00  INFO 13192 --- [tasklist] [restartedMain] liquibase.command                        : Logging exception.
+2025-09-25T00:11:49.715+02:00  INFO 13192 --- [tasklist] [restartedMain] liquibase.ui                             : ERROR: Exception Details
+2025-09-25T00:11:49.716+02:00  INFO 13192 --- [tasklist] [restartedMain] liquibase.ui                             : ERROR: Exception Primary Class:  ChangeLogParseException
+2025-09-25T00:11:49.716+02:00  INFO 13192 --- [tasklist] [restartedMain] liquibase.ui                             : ERROR: Exception Primary Reason:  classpath:/db/changelog/db.changelog-master.yaml does not exist
+2025-09-25T00:11:49.718+02:00  INFO 13192 --- [tasklist] [restartedMain] liquibase.ui                             : ERROR: Exception Primary Source:  4.31.1
+2025-09-25T00:11:49.719+02:00  INFO 13192 --- [tasklist] [restartedMain] liquibase.command                        : Command execution complete
+2025-09-25T00:11:51.258+02:00  WARN 13192 --- [tasklist] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: classpath:/db/changelog/db.changelog-master.yaml does not exist
+2025-09-25T00:11:51.260+02:00  INFO 13192 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2025-09-25T00:11:51.488+02:00  INFO 13192 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2025-09-25T00:11:51.490+02:00  INFO 13192 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-09-25T00:11:51.502+02:00  INFO 13192 --- [tasklist] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-09-25T00:11:51.589+02:00 ERROR 13192 --- [tasklist] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Liquibase failed to start because no changelog could be found at 'classpath:/db/changelog/db.changelog-master.yaml'.
+
+Action:
+
+Make sure a Liquibase changelog is present at the configured path.
+
+2025-09-25T00:11:53.113+02:00  INFO 13192 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Starting TasklistApplication using Java 21.0.6 with PID 13192 (C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist\target\classes started by Mpho Masibigiri in C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist)
+2025-09-25T00:11:53.114+02:00 DEBUG 13192 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Running with Spring Boot v3.5.6, Spring v6.2.11
+2025-09-25T00:11:53.115+02:00  INFO 13192 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-09-25T00:11:53.487+02:00  INFO 13192 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-25T00:11:53.512+02:00  INFO 13192 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 1 JPA repository interface.
+2025-09-25T00:11:53.712+02:00  INFO 13192 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-09-25T00:11:53.716+02:00  INFO 13192 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-25T00:11:53.717+02:00  INFO 13192 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-09-25T00:11:53.767+02:00  INFO 13192 --- [tasklist] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-09-25T00:11:53.768+02:00  INFO 13192 --- [tasklist] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 649 ms
+2025-09-25T00:11:53.843+02:00  INFO 13192 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2025-09-25T00:11:53.982+02:00  INFO 13192 --- [tasklist] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection org.postgresql.jdbc.PgConnection@249a2438
+2025-09-25T00:11:53.983+02:00  INFO 13192 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2025-09-25T00:11:54.019+02:00  INFO 13192 --- [tasklist] [restartedMain] liquibase.database                       : Set default schema name to public
+2025-09-25T00:11:54.058+02:00  INFO 13192 --- [tasklist] [restartedMain] liquibase.command                        : Logging exception.
+2025-09-25T00:11:54.058+02:00  INFO 13192 --- [tasklist] [restartedMain] liquibase.ui                             : ERROR: Exception Details
+2025-09-25T00:11:54.059+02:00  INFO 13192 --- [tasklist] [restartedMain] liquibase.ui                             : ERROR: Exception Primary Class:  ChangeLogParseException
+2025-09-25T00:11:54.059+02:00  INFO 13192 --- [tasklist] [restartedMain] liquibase.ui                             : ERROR: Exception Primary Reason:  classpath:/db/changelog/db.changelog-master.yaml does not exist
+2025-09-25T00:11:54.060+02:00  INFO 13192 --- [tasklist] [restartedMain] liquibase.ui                             : ERROR: Exception Primary Source:  4.31.1
+2025-09-25T00:11:54.060+02:00  INFO 13192 --- [tasklist] [restartedMain] liquibase.command                        : Command execution complete
+2025-09-25T00:11:54.065+02:00  WARN 13192 --- [tasklist] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: classpath:/db/changelog/db.changelog-master.yaml does not exist
+2025-09-25T00:11:54.066+02:00  INFO 13192 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2025-09-25T00:11:54.068+02:00  INFO 13192 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2025-09-25T00:11:54.069+02:00  INFO 13192 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-09-25T00:11:54.081+02:00  INFO 13192 --- [tasklist] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-09-25T00:11:54.089+02:00 ERROR 13192 --- [tasklist] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Liquibase failed to start because no changelog could be found at 'classpath:/db/changelog/db.changelog-master.yaml'.
+
+Action:
+
+Make sure a Liquibase changelog is present at the configured path.
+
+2025-09-25T00:12:33.213+02:00  INFO 13192 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Starting TasklistApplication using Java 21.0.6 with PID 13192 (C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist\target\classes started by Mpho Masibigiri in C:\Users\Mpho Masibigiri\Desktop\FNB\Spring-boot-Tasklist)
+2025-09-25T00:12:33.215+02:00 DEBUG 13192 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : Running with Spring Boot v3.5.6, Spring v6.2.11
+2025-09-25T00:12:33.216+02:00  INFO 13192 --- [tasklist] [restartedMain] com.api.tasklist.TasklistApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-09-25T00:12:33.557+02:00  INFO 13192 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-25T00:12:33.576+02:00  INFO 13192 --- [tasklist] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 1 JPA repository interface.
+2025-09-25T00:12:33.722+02:00  INFO 13192 --- [tasklist] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-09-25T00:12:33.725+02:00  INFO 13192 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-25T00:12:33.725+02:00  INFO 13192 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-09-25T00:12:33.755+02:00  INFO 13192 --- [tasklist] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-09-25T00:12:33.793+02:00  INFO 13192 --- [tasklist] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 570 ms
+2025-09-25T00:12:33.851+02:00  INFO 13192 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2025-09-25T00:12:34.067+02:00  INFO 13192 --- [tasklist] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection org.postgresql.jdbc.PgConnection@6a2364dc
+2025-09-25T00:12:34.068+02:00  INFO 13192 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2025-09-25T00:12:34.096+02:00  INFO 13192 --- [tasklist] [restartedMain] liquibase.database                       : Set default schema name to public
+2025-09-25T00:12:34.126+02:00  INFO 13192 --- [tasklist] [restartedMain] liquibase.command                        : Logging exception.
+2025-09-25T00:12:34.127+02:00  INFO 13192 --- [tasklist] [restartedMain] liquibase.ui                             : ERROR: Exception Details
+2025-09-25T00:12:34.128+02:00  INFO 13192 --- [tasklist] [restartedMain] liquibase.ui                             : ERROR: Exception Primary Class:  ChangeLogParseException
+2025-09-25T00:12:34.128+02:00  INFO 13192 --- [tasklist] [restartedMain] liquibase.ui                             : ERROR: Exception Primary Reason:  classpath:/db/changelog/db.changelog-master.yaml does not exist
+2025-09-25T00:12:34.129+02:00  INFO 13192 --- [tasklist] [restartedMain] liquibase.ui                             : ERROR: Exception Primary Source:  4.31.1
+2025-09-25T00:12:34.130+02:00  INFO 13192 --- [tasklist] [restartedMain] liquibase.command                        : Command execution complete
+2025-09-25T00:12:34.140+02:00  WARN 13192 --- [tasklist] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: classpath:/db/changelog/db.changelog-master.yaml does not exist
+2025-09-25T00:12:34.141+02:00  INFO 13192 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2025-09-25T00:12:34.143+02:00  INFO 13192 --- [tasklist] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2025-09-25T00:12:34.144+02:00  INFO 13192 --- [tasklist] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-09-25T00:12:34.158+02:00  INFO 13192 --- [tasklist] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-09-25T00:12:34.170+02:00 ERROR 13192 --- [tasklist] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Liquibase failed to start because no changelog could be found at 'classpath:/db/changelog/db.changelog-master.yaml'.
+
+Action:
+
+Make sure a Liquibase changelog is present at the configured path.
+
