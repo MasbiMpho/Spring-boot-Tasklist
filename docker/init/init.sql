@@ -11,7 +11,6 @@ SET idle_in_transaction_session_timeout = 0;
 SET transaction_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET xmloption = content;
 SET client_min_messages = warning;
@@ -21,11 +20,13 @@ SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
+SET search_path = public;
+
 --
 -- Name: task; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.task (
+CREATE TABLE IF NOT EXISTS task (
     id bigint NOT NULL,
     name character varying(255) NOT NULL,
     status character varying(255) NOT NULL,
@@ -33,13 +34,13 @@ CREATE TABLE public.task (
 );
 
 
-ALTER TABLE public.task OWNER TO postgres;
+ALTER TABLE task OWNER TO postgres;
 
 --
 -- Name: task_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.task_id_seq
+CREATE SEQUENCE task_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -47,47 +48,47 @@ CREATE SEQUENCE public.task_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.task_id_seq OWNER TO postgres;
+ALTER SEQUENCE task_id_seq OWNER TO postgres;
 
 --
 -- Name: task_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.task_id_seq OWNED BY public.task.id;
+ALTER SEQUENCE task_id_seq OWNED BY task.id;
 
 
 --
 -- Name: task id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.task ALTER COLUMN id SET DEFAULT nextval('public.task_id_seq'::regclass);
+ALTER TABLE ONLY task ALTER COLUMN id SET DEFAULT nextval('task_id_seq'::regclass);
 
 
 --
 -- Data for Name: task; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.task (id, name, status, due_date) FROM stdin;
-1	Create a tasklist	Uncompleted	2025-09-24
-3	Task 3	completed	2025-09-27
-4	Task 4	uncompleted	2025-09-29
-2	Task 2	uncompleted	2025-09-26
-5	Task 5	uncompleted	2025-09-30
-\.
+INSERT INTO task (name, status, due_date) VALUES 
+('Create a tasklist', 'Uncompleted', '2025-09-24'),
+('Task 3',	'completed',	'2025-09-27'),
+('Task 4', 'uncompleted', '2025-09-29'),
+('Task 2', 'uncompleted', '2025-09-26'),
+('Task 5', 'uncompleted', '2025-09-30');
+
 
 
 --
 -- Name: task_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.task_id_seq', 5, true);
+SELECT pg_catalog.setval('task_id_seq', 5, true);
 
 
 --
 -- Name: task task_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.task
+ALTER TABLE ONLY task
     ADD CONSTRAINT task_pkey PRIMARY KEY (id);
 
 

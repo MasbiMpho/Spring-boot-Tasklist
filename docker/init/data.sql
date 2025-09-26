@@ -21,18 +21,18 @@ SET row_security = off;
 -- Data for Name: task; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.task VALUES (1, 'Create a tasklist', 'Uncompleted', '2025-09-24');
-INSERT INTO public.task VALUES (3, 'Task 3', 'completed', '2025-09-27');
-INSERT INTO public.task VALUES (4, 'Task 4', 'uncompleted', '2025-09-29');
-INSERT INTO public.task VALUES (2, 'Task 2', 'uncompleted', '2025-09-26');
-INSERT INTO public.task VALUES (5, 'Task 5', 'uncompleted', '2025-09-30');
+INSERT INTO task VALUES (1, 'Create a tasklist', 'Uncompleted', '2025-09-24');
+INSERT INTO task VALUES (3, 'Task 3', 'completed', '2025-09-27');
+INSERT INTO task VALUES (4, 'Task 4', 'uncompleted', '2025-09-29');
+INSERT INTO task VALUES (2, 'Task 2', 'uncompleted', '2025-09-26');
+INSERT INTO task VALUES (5, 'Task 5', 'uncompleted', '2025-09-30');
 
 
 --
 -- Name: task_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.task_id_seq', 5, true);
+SELECT pg_catalog.setval('task_id_seq', 5, true);
 
 
 --

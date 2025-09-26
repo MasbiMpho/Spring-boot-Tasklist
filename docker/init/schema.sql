@@ -25,7 +25,7 @@ SET default_table_access_method = heap;
 -- Name: task; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.task (
+CREATE TABLE IF NOT EXISTS task (
     id bigint NOT NULL,
     name character varying(255) NOT NULL,
     status character varying(255) NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE public.task (
 -- Name: task_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.task_id_seq
+CREATE SEQUENCE task_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -49,21 +49,21 @@ CREATE SEQUENCE public.task_id_seq
 -- Name: task_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.task_id_seq OWNED BY public.task.id;
+ALTER SEQUENCE task_id_seq OWNED BY task.id;
 
 
 --
 -- Name: task id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.task ALTER COLUMN id SET DEFAULT nextval('public.task_id_seq'::regclass);
+ALTER TABLE ONLY task ALTER COLUMN id SET DEFAULT nextval('task_id_seq'::regclass);
 
 
 --
 -- Name: task task_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.task
+ALTER TABLE ONLY task
     ADD CONSTRAINT task_pkey PRIMARY KEY (id);
 
 
