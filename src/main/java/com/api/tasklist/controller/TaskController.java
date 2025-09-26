@@ -16,6 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.api.tasklist.model.Task;
 import com.api.tasklist.repository.TaskRepository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+
 
 @RestController
 @RequestMapping("/tasks")
@@ -24,86 +29,129 @@ public class TaskController {
     @Autowired
     private TaskRepository taskRepository;
 
-    //Done
+    private static final Logger logger = LoggerFactory.getLogger(TaskController.class);
+
+    //Done w/ logging
     @GetMapping
     public List<Task> getAllTasks() {
+        logger.info("Fetching all tasks");
+
         return taskRepository.findAll();
     }
 
-   // Problems
-    @GetMapping("/id")
-    public ResponseEntity<Task> getTaskById(@PathVariable Long Id){
-        return taskRepository.findById(Id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+   // Done w/ logging
+    @GetMapping("/{id}")
+    public ResponseEntity<Task> getTaskById(@PathVariable Long id){
+        logger.info("Fetching task with ID: {}", id);
+
+        return taskRepository.findById(id)
+                .map(task -> {
+                    logger.debug("Task found: {}", task);
+                    return ResponseEntity.ok(task);
+                })
+                .orElseGet(() -> {
+                    logger.warn("Task not found with ID: {}", id);
+                    return ResponseEntity.notFound().build();
+                });
     }
 
-    //Done
+    //Done w logging
     @GetMapping("/status/completed")
-    public List<Task> getCompletedTasks() {
-        return taskRepository.findAll().stream()
+    public ResponseEntity<List<Task>> getCompletedTasks() {
+        logger.info("Fetching completed tasks");
+
+        List<Task> completedTasks = taskRepository.findAll().stream()
                 .filter(task -> "completed".equalsIgnoreCase(task.getStatus()))
                 .toList();
-    }
 
-    //Done
+        if (completedTasks.isEmpty()) {
+            logger.warn("No completed tasks were found");
+            return ResponseEntity.noContent().build();
+        } else {
+            logger.debug("Found {} completed task(s)", completedTasks.size());
+            return ResponseEntity.ok(completedTasks);
+        }
+    }
+    
+    //Done w/ logging
     @GetMapping("/status/uncompleted")
-    public List<Task> getUncompletedTasks() {
-        return taskRepository.findAll().stream()
+    public ResponseEntity<List<Task>> getUncompletedTasks() {
+        logger.info("Fetching uncompleted tasks");
+
+        List<Task> uncompletedTasks = taskRepository.findAll().stream()
                 .filter(task -> "uncompleted".equalsIgnoreCase(task.getStatus()))
                 .toList();
+
+        if (uncompletedTasks.isEmpty()) {
+            logger.warn("No uncompleted tasks were found");
+            return ResponseEntity.noContent().build();
+        } else {
+            logger.debug("Found {} uncompleted task(s)", uncompletedTasks.size());
+            return ResponseEntity.ok(uncompletedTasks);
+        }
     }
 
-    //Done
+    //Done w/ logging
     @PostMapping("/addtask")
-    public String addTask(@RequestParam String name, @RequestParam @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate due_date) {
-
+    public ResponseEntity<String> addTask(@RequestParam String name, @RequestParam @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate due_date) {
+        logger.info("Adding new task: {} with due date: {}", name, due_date);
+        
         Task newTask = new Task();
-
         newTask.setName(name);
         newTask.setStatus("uncompleted");
         newTask.setDue_Date(due_date);
 
-        taskRepository.save(newTask);
+        try {
+            taskRepository.save(newTask);
+            logger.debug("Task successfully added: {}", newTask);
 
-        return "Task was successfully added";
+            return ResponseEntity.ok("Task was successfully added");
+        } catch (Exception e) {
+            logger.error("Error occurred while adding task: {}", e.getMessage());
+
+            return ResponseEntity.status(500).body("An error occurred while adding the task");
+        }
     }
 
-
-    //Done
+    //Done w/ logging
     @PostMapping("/mark")
-    public String markTaskAsCompleted(@RequestParam Long id) {
-        if(taskRepository.findById(id).isEmpty()){
-            throw new RuntimeException("Task not found with id " + id);
-        }else
-        {
-            Task task = taskRepository.findById(id).get();
+    public ResponseEntity<String> markTaskAsCompleted(@RequestParam Long id) {
+        logger.info("Marking task with ID " + id + " as Completed.");
+        return taskRepository.findById(id)
+                .map(task -> {
+                    task.setStatus("completed");
+                    taskRepository.save(task);
 
-            task.setStatus("completed");
-
-            taskRepository.save(task);
-
-            return "Task id " + id + " has been marked as Completed.";
-        }
+                    String message = "Task id " + id + " has been marked as Completed.";
+                    logger.debug(message);
+                    return ResponseEntity.ok(message);
+                })
+                .orElseGet(() -> {
+                    String errorMessage = "Task not found with id " + id;
+                    logger.warn(errorMessage);
+                    return ResponseEntity.status(404).body(errorMessage);
+                });
     }
 
-    //Done
+    //Done w/ logging
     @PostMapping("/unmark")
-    public String markTaskAsUncompleted(@RequestParam Long id) {
-         if(taskRepository.findById(id).isEmpty()){
-            throw new RuntimeException("Task not found with id " + id);
-        }else
-        {
-            Task task = taskRepository.findById(id).get();
+    public ResponseEntity<String> markTaskAsUncompleted(@RequestParam Long id) {
+        logger.info("Marking task with ID " + id + " as Uncompleted.");
+        return taskRepository.findById(id)
+                .map(task -> {
+                    task.setStatus("uncompleted");
+                    taskRepository.save(task);
 
-            task.setStatus("uncompleted");
-
-            taskRepository.save(task);
-
-            return "Task id " + id + " has been marked as Uncompleted.";
-        }
+                    String message = "Task id " + id + " has been marked as Uncompleted.";
+                    logger.debug(message);
+                    return ResponseEntity.ok(message);
+                })
+                .orElseGet(() -> {
+                    String errorMessage = "Task not found with id " + id;
+                    logger.warn(errorMessage);
+                    return ResponseEntity.status(404).body(errorMessage);
+                });
     }
-
-   
+ 
     
 }
