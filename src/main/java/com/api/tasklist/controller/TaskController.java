@@ -22,10 +22,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 
-
-
 @RestController
-@RequestMapping("/api")
+@RequestMapping("")
 @Tag(name = "Task Management", description = "APIs for managing tasks")
 public class TaskController {
 
@@ -37,7 +35,7 @@ public class TaskController {
 
     //Done w/ logging
     @Operation(summary = "Get All Tasks", description = "Retrieve a list of all tasks")
-    @GetMapping("/tasks")
+    @GetMapping("/")
     public List<Task> getAllTasks() {        
         logger.info("Fetching all tasks");
 
