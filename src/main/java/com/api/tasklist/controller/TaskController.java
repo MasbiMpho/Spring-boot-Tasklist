@@ -3,6 +3,8 @@ package com.api.tasklist.controller;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -16,31 +18,35 @@ import org.springframework.web.bind.annotation.RestController;
 import com.api.tasklist.model.Task;
 import com.api.tasklist.repository.TaskRepository;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 
 
 
 @RestController
-@RequestMapping("/tasks")
+@RequestMapping("/api")
+@Tag(name = "Task Management", description = "APIs for managing tasks")
 public class TaskController {
 
     @Autowired
     private TaskRepository taskRepository;
 
+
     private static final Logger logger = LoggerFactory.getLogger(TaskController.class);
 
     //Done w/ logging
-    @GetMapping
-    public List<Task> getAllTasks() {
+    @Operation(summary = "Get All Tasks", description = "Retrieve a list of all tasks")
+    @GetMapping("/tasks")
+    public List<Task> getAllTasks() {        
         logger.info("Fetching all tasks");
 
         return taskRepository.findAll();
     }
 
    // Done w/ logging
-    @GetMapping("/{id}")
+   @Operation(summary = "Get Task by ID", description = "Retrieve a task by its ID")
+    @GetMapping("/tasks/{id}")
     public ResponseEntity<Task> getTaskById(@PathVariable Long id){
         logger.info("Fetching task with ID: {}", id);
 
@@ -56,6 +62,7 @@ public class TaskController {
     }
 
     //Done w logging
+    @Operation(summary = "Get Completed Tasks", description = "Retrieve a list of all completed tasks")
     @GetMapping("/status/completed")
     public ResponseEntity<List<Task>> getCompletedTasks() {
         logger.info("Fetching completed tasks");
@@ -74,6 +81,7 @@ public class TaskController {
     }
     
     //Done w/ logging
+    @Operation(summary = "Get Uncompleted Tasks", description = "Retrieve a list of all uncompleted tasks")
     @GetMapping("/status/uncompleted")
     public ResponseEntity<List<Task>> getUncompletedTasks() {
         logger.info("Fetching uncompleted tasks");
@@ -92,6 +100,7 @@ public class TaskController {
     }
 
     //Done w/ logging
+    @Operation(summary = "Add New Task", description = "Add a new task with a name and due date")
     @PostMapping("/addtask")
     public ResponseEntity<String> addTask(@RequestParam String name, @RequestParam @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate due_date) {
         logger.info("Adding new task: {} with due date: {}", name, due_date);
@@ -114,6 +123,7 @@ public class TaskController {
     }
 
     //Done w/ logging
+    @Operation(summary = "Mark Task as Completed", description = "Mark a task as completed by its ID")
     @PostMapping("/mark")
     public ResponseEntity<String> markTaskAsCompleted(@RequestParam Long id) {
         logger.info("Marking task with ID " + id + " as Completed.");
@@ -134,6 +144,7 @@ public class TaskController {
     }
 
     //Done w/ logging
+    @Operation(summary = "Mark Task as Uncompleted", description = "Mark a task as uncompleted by its ID")
     @PostMapping("/unmark")
     public ResponseEntity<String> markTaskAsUncompleted(@RequestParam Long id) {
         logger.info("Marking task with ID " + id + " as Uncompleted.");
