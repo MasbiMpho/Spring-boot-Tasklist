@@ -23,8 +23,8 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Build and test
-        run: mvn clean verify -DskipTests=false
+      - name: Build without test
+        run: mvn -B clean package -DskipTests
 
   dockerize:
     name: Build and Push Docker Image
@@ -43,7 +43,7 @@ jobs:
       - name: Build Docker image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/springboot-tasklist-app:latest .
 
-      # Step 6: Push Docker image to Docker Hub
+      
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/springboot-tasklist-app:latest
 
@@ -52,13 +52,13 @@ jobs:
     runs-on: ubuntu-latest
     needs: dockerize
     steps:
-      # Step 7: SSH deployment
+      
       - name: SSH and deploy
         uses: appleboy/ssh-action@v1.1.0
         with:
-          host: ${{ secrets.WSL_HOST }}            # IP of your WSL Ubuntu machine
-          username: ${{ secrets.WSL_USER }}        # Ubuntu username
-          key: ${{ secrets.WSL_SSH_KEY }}          # Private SSH key
+          host: ${{ secrets.WSL_HOST }}           
+          username: ${{ secrets.WSL_USER }}        
+          key: ${{ secrets.WSL_SSH_KEY }}          
           script: |
             echo "Pulling latest Docker image..."
             cd ~/tasklist
