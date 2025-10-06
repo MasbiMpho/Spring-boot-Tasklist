@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -178,6 +179,26 @@ public class TaskController {
                     taskRepository.save(task);
 
                     String message = "Task id " + id + " has been updated.";
+                    logger.debug(message);
+                    return ResponseEntity.ok(message);
+                })
+                .orElseGet(() -> {
+                    String errorMessage = "Task not found with id " + id;
+                    logger.warn(errorMessage);
+                    return ResponseEntity.status(404).body(errorMessage);
+                });
+    }
+
+    @Operation(summary = "Delete Task", description = "Delete a task by its ID")
+    @DeleteMapping("/deletetask")
+    public ResponseEntity<String> deleteTask(@RequestParam Long id) {
+        logger.info("Deleting task with ID: {}", id);
+
+        return taskRepository.findById(id)
+                .map(task -> {
+                    taskRepository.delete(task);
+
+                    String message = "Task id " + id + " has been deleted.";
                     logger.debug(message);
                     return ResponseEntity.ok(message);
                 })
