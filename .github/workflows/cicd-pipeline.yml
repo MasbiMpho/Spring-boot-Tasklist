@@ -28,7 +28,6 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Start database using Docker Compose
-      - name: Start database using Docker Compose
         env:
           POSTGRES_DB: taskdb
           POSTGRES_USER: ${{ secrets.DB_USERNAME }}
