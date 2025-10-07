@@ -105,6 +105,18 @@ jobs:
         run: |
           docker build -t springboot_tasklist_app:latest .
 
+      - name: Create .env file for Docker Compose
+        run: |
+          cat <<EOF > .env
+          POSTGRES_DB=taskdb
+          POSTGRES_USER=${{ secrets.DB_USERNAME }}
+          POSTGRES_PASSWORD=${{ secrets.DB_PASSWORD }}
+          POSTGRES_PORT=5432
+          POSTGRES_VERSION=17
+          APP_PORT=8080
+          EOF
+
+
       - name: Run container locally
         run: |
           docker compose down || true
