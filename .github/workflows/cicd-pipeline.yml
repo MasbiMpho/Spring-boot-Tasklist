@@ -98,4 +98,8 @@ jobs:
 
           echo "Deployment complete!"
 
+          docker compose down
+
+          echo "Container stopped"
+
   
