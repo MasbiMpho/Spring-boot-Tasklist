@@ -32,7 +32,7 @@ jobs:
         run: |
           mvn clean package -DskipTests=false
           mvn test
-s
+          
       - name: Prepare deployment folder
         run: |
           if [ ! -d "$HOME/tasklist" ]; then
