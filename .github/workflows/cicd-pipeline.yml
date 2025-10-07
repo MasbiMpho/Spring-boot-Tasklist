@@ -97,6 +97,6 @@ jobs:
       - name: Push image to Docker Hub
         run: |
           echo "Tagging image..."
-          docker tag tasklist_app:latest ${{ secrets.DOCKER_USERNAME }}/tasklist:latest
+          docker tag tasklist_app:latest ${{ secrets.DOCKER_USERNAME }}/spring-boot-tasklist-app:latest
           echo "Pushing to Docker Hub..."
-          docker push ${{ secrets.DOCKER_USERNAME }}/tasklist:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/spring-boot-tasklist-app:latest
