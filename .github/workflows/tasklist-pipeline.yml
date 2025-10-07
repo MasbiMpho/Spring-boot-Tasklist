@@ -58,12 +58,10 @@ jobs:
         with:
           host: ${{ secrets.WSL_HOST }}           
           username: ${{ secrets.WSL_USER }}        
-          key: ${{ secrets.WSL_SSH_KEY }}          
+          key: ${{ secrets.WSL_SSH_KEY }}
+          port: 22
+          script_stop: false
           script: |
-            echo "Pulling latest Docker image..."
-            cd ~/tasklist
-            docker pull ${{ secrets.DOCKER_USERNAME }}/springboot-tasklist-app:latest
-            echo "Stopping existing containers..."
-            docker-compose down
-            echo "Starting containers with updated image..."
-            docker-compose up -d --build
+            echo "connected as $(whoami)
+            echo "current directory: $(pwd)
+            ls -la ~
