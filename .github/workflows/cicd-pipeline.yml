@@ -27,11 +27,31 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and Test with Maven
+      - name: Start database using Docker Compose
         run: |
-          mvn clean package -DskipTests=false
-          mvn test
-          
+          docker compose -f ./docker-compose.yml up -d db
+
+      - name: Wait for database to be ready
+        run: |
+          echo "Waiting for PostgreSQL to be ready..."
+          for i in {1..30}; do
+            if docker exec $(docker ps -qf "name=db") pg_isready -U ${{ secrets.DB_USERNAME }} > /dev/null; then
+              echo "Database is ready!"
+              break
+            else
+              echo "Waiting... ($i)"
+              sleep 2
+            fi
+          done
+
+      - name: Build and Test with Maven
+        env:
+          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/tasklistdb
+          SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}
+          SPRING_DATASOURCE_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        run: |
+          mvn clean test
+
       - name: Prepare deployment folder
         run: |
           if [ ! -d "$HOME/tasklist" ]; then
