@@ -70,15 +70,19 @@ jobs:
             cd ~/tasklist
             git pull origin main
           fi
-
+  
+      - name: Create .env file in deployment folder
+        run: |
+            cat <<EOF > ~/tasklist/.env
+            POSTGRES_VERSION=17
+            POSTGRES_DB=taskdb
+            POSTGRES_USER=${{ secrets.DB_USERNAME }}
+            POSTGRES_PASSWORD=${{ secrets.DB_PASSWORD }}
+            POSTGRES_PORT=5432
+            APP_PORT=8080
+            EOF
+    
       - name: Deploy Spring Boot app with Docker Compose
-        env:
-          POSTGRES_VERSION: 17
-          POSTGRES_DB: taskdb
-          POSTGRES_USER: ${{ secrets.DB_USERNAME }}
-          POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          POSTGRES_PORT: 5432
-          APP_PORT: 8080
         run: |
           cd ~/tasklist
           echo "Stopping old containers..."
