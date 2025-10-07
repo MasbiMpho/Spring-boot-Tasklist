@@ -98,6 +98,9 @@ jobs:
 
           echo "Deployment complete!"
 
+      - name: List Docker images
+        run: docker images
+
       - name: Push image to Docker Hub
         run: |
           echo "Tagging image..."
