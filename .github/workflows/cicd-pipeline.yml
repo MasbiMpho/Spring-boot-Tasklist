@@ -33,7 +33,7 @@ jobs:
 
       - name: Start database using Docker Compose
         env:
-          POSTGRES_DB: ${{ secrets.DB_NAME }}
+          POSTGRES_DB: taskdb
           POSTGRES_USER: ${{ secrets.DB_USERNAME }}
           POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
           POSTGRES_PORT: 5432
@@ -57,10 +57,10 @@ jobs:
 
       - name: Build and Test with Maven
         env:
-          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/taskdb
+          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/${{ secrets.DB_NAME }}
           SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}
           SPRING_DATASOURCE_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          APP_PORT: 8080
+          APP_PORT: ${{ secrets.VM_PORT }}
         run: |
           mvn clean test -Dspring-boot.run.arguments="--server.port=${APP_PORT}"
 
@@ -87,11 +87,20 @@ jobs:
             DB_URL=jdbc:postgresql://${{ secrets.HOST_IP }}:5432/${{ secrets.DB_NAME }}
             EOF
     
-      - name: Run Spring Boot App with Maven
+      - name: Deploy Spring Boot app with Docker Compose
         run: |
           cd ~/tasklist
-          echo "Running app via maven"
-          mvn spring-boot:run
-          echo "App is running on VM"
+          echo "Stopping old containers..."
+          docker compose down --remove-orphans || true
+          docker rm -f taskdb_db || true 
+
+          echo "Rebuilding and starting containers..."
+          docker compose up -d --build
+
+          echo "Deployment complete!"
+
+          docker compose down
+
+          echo "Container stopped"
 
   
