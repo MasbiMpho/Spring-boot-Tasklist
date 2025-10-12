@@ -37,14 +37,17 @@ jobs:
 
       - name: Run PostgreSQL Container
         run: |
+          docker volume create postgres_data || true
           docker run -d \
             --name taskdb_db \
             --network spring_network \
+            -v postgres_data:/var/lib/postgresql/data \
             -e POSTGRES_DB=${{ secrets.DB_NAME }} \
             -e POSTGRES_USER=${{ secrets.DB_USERNAME }} \
             -e POSTGRES_PASSWORD=${{ secrets.DB_PASSWORD }} \
             -p 5432:5432 \
             postgres:17
+
 
       - name: Wait for PostgreSQL to be ready
         run: |
@@ -109,6 +112,16 @@ jobs:
             DB_URL=jdbc:postgresql://${{ secrets.HOST_IP }}:5432/${{ secrets.DB_NAME }}
             EOF
 
+      - name: Stop any running Maven Spring Boot app
+        run: |
+          echo "Checking for running Spring Boot process..."
+          PID=$(pgrep -f 'mvn spring-boot:run')
+          if [ ! -z "$PID" ]; then
+            echo "Found running app with PID $PID. Stopping it..."
+            kill -9 $PID
+          else
+            echo "No Spring Boot app running."
+          fi
 
       - name: Run the application with Maven
         env:
