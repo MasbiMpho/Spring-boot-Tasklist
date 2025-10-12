@@ -64,9 +64,14 @@ jobs:
         run: |
           mvn clean test -Dspring-boot.run.arguments="--server.port=${APP_PORT}"
 
-
       - name: Run Spring Boot App Container
         run: |
+          # Stop and remove existing container if it exists
+          if [ "$(docker ps -aq -f name=spring_app)" ]; then
+            echo "Removing existing container spring_app..."
+            docker rm -f spring_app
+          fi
+          
           docker run -d \
             --name spring_app \
             -e SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/${{ secrets.DB_NAME }} \
@@ -75,6 +80,7 @@ jobs:
             -e SERVER_PORT=${{ secrets.VM_PORT }} \
             -p ${{ secrets.APP_PORT }}:${{ secrets.APP_PORT }} \
             ${{ secrets.DOCKER_USERNAME }}/springboot_tasklist_app:latest
+
 
       - name: Prepare deployment folder
         run: |
