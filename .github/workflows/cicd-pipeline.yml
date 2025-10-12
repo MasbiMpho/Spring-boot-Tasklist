@@ -29,13 +29,17 @@ jobs:
 
       - name: Clean up previous containers
         run: |
-          docker rm -f taskdb_db || true
-          docker rm -f springboot_tasklist_app || true
+          docker rm -f taskdb_db spring_app || true
+
+      - name: Create Docker network
+        run: |
+          docker network create spring_network || true
 
       - name: Run PostgreSQL Container
         run: |
           docker run -d \
             --name taskdb_db \
+            --network spring_network \
             -e POSTGRES_DB=${{ secrets.DB_NAME }} \
             -e POSTGRES_USER=${{ secrets.DB_USERNAME }} \
             -e POSTGRES_PASSWORD=${{ secrets.DB_PASSWORD }} \
@@ -66,15 +70,15 @@ jobs:
 
       - name: Run Spring Boot App Container
         run: |
-          # Stop and remove existing container if it exists
+          # Remove existing container if exists
           if [ "$(docker ps -aq -f name=spring_app)" ]; then
-            echo "Removing existing container spring_app..."
             docker rm -f spring_app
           fi
-          
+
           docker run -d \
             --name spring_app \
-            -e SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/${{ secrets.DB_NAME }} \
+            --network spring_network \
+            -e SPRING_DATASOURCE_URL=jdbc:postgresql://taskdb_db:5432/${{ secrets.DB_NAME }} \
             -e SPRING_DATASOURCE_USERNAME=${{ secrets.DB_USERNAME }} \
             -e SPRING_DATASOURCE_PASSWORD=${{ secrets.DB_PASSWORD }} \
             -e SERVER_PORT=${{ secrets.VM_PORT }} \
