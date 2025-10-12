@@ -31,7 +31,7 @@ jobs:
         run: |
           docker rm -f taskdb_db || true
 
-      - name: Start database using Docker Compose
+      - name: Start App and database using Docker Compose
         env:
           POSTGRES_DB: taskdb
           POSTGRES_USER: ${{ secrets.DB_USERNAME }}
@@ -40,7 +40,7 @@ jobs:
           POSTGRES_VERSION: 17
           APP_PORT: 8080
         run: |
-          docker compose -f ./docker-compose.yml up -d db
+          docker compose -f ./docker-compose.yml up -d
 
       - name: Wait for database to be ready
         run: |
@@ -86,21 +86,19 @@ jobs:
             APP_PORT=${{ secrets.VM_PORT }}
             DB_URL=jdbc:postgresql://${{ secrets.HOST_IP }}:5432/${{ secrets.DB_NAME }}
             EOF
-    
-      - name: Deploy Spring Boot app with Docker Compose
+
+      - name: Stop any previous running application
         run: |
-          cd ~/tasklist
-          echo "Stopping old containers..."
-          docker compose down --remove-orphans || true
-          docker rm -f taskdb_db || true 
+          sudo fuser -k ${{ secrets.VM_PORT }}/tcp || true
 
-          echo "Rebuilding and starting containers..."
-          docker compose up -d --build
-
-          echo "Deployment complete!"
-
-          docker compose down
-
-          echo "Container stopped"
+      - name: Run the application with Maven
+        env:
+          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/${{ secrets.DB_NAME }}
+          SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}
+          SPRING_DATASOURCE_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          SERVER_PORT: ${{ secrets.VM_PORT }}
+        run: |
+          # nohup and & run the process in the background so the workflow can finish
+          nohup mvn spring-boot:run -Dspring-boot.run.arguments="--server.port=${SERVER_PORT}" &
 
   
