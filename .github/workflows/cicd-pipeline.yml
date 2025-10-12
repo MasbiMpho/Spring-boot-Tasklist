@@ -74,7 +74,7 @@ jobs:
             -e SPRING_DATASOURCE_PASSWORD=${{ secrets.DB_PASSWORD }} \
             -e SERVER_PORT=${{ secrets.VM_PORT }} \
             -p ${{ secrets.APP_PORT }}:${{ secrets.APP_PORT }} \
-            yourdockeruser/tasklist:latest
+            ${{ secrets.DOCKER_USERNAME }}/springboot_tasklist_app:latest
 
       - name: Prepare deployment folder
         run: |
