@@ -99,9 +99,6 @@ jobs:
             DB_URL=jdbc:postgresql://${{ secrets.HOST_IP }}:5432/${{ secrets.DB_NAME }}
             EOF
 
-      - name: Stop any previous running application
-        run: |
-          sudo fuser -k ${{ secrets.VM_PORT }}/tcp || true
 
       - name: Run the application with Maven
         env:
