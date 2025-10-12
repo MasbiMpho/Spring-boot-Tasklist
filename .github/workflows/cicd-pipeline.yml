@@ -64,9 +64,6 @@ jobs:
         run: |
           mvn clean test -Dspring-boot.run.arguments="--server.port=${APP_PORT}"
 
-      - name: Stop any previously running app on port
-        run: |
-          sudo fuser -k ${{ secrets.VM_PORT }}/tcp || true
 
       - name: Run Spring Boot App Container
         run: |
