@@ -61,7 +61,7 @@ jobs:
 
       - name: Build and Test with Maven
         env:
-          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/${{ secrets.DB_NAME }}
+          SPRING_DATASOURCE_URL: jdbc:postgresql://taskdb_db:5432/${{ secrets.DB_NAME }}
           SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}
           SPRING_DATASOURCE_PASSWORD: ${{ secrets.DB_PASSWORD }}
           APP_PORT: ${{ secrets.VM_PORT }}
