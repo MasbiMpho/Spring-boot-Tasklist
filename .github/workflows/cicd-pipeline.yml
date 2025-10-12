@@ -71,12 +71,12 @@ jobs:
       - name: Run Spring Boot App Container
         run: |
           # Remove existing container if exists
-          if [ "$(docker ps -aq -f name=spring_app)" ]; then
-            docker rm -f spring_app
+          if [ "$(docker ps -aq -f name=springboot_tasklist_app)" ]; then
+            docker rm -f springboot_tasklist_app
           fi
 
           docker run -d \
-            --name spring_app \
+            --name springboot_tasklist_app \
             --network spring_network \
             -e SPRING_DATASOURCE_URL=jdbc:postgresql://taskdb_db:5432/${{ secrets.DB_NAME }} \
             -e SPRING_DATASOURCE_USERNAME=${{ secrets.DB_USERNAME }} \
@@ -112,12 +112,11 @@ jobs:
 
       - name: Run the application with Maven
         env:
-          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/${{ secrets.DB_NAME }}
+          SPRING_DATASOURCE_URL: jdbc:postgresql://${{ secrets.HOST_IP }}:5432/${{ secrets.DB_NAME }}
           SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}
           SPRING_DATASOURCE_PASSWORD: ${{ secrets.DB_PASSWORD }}
           SERVER_PORT: ${{ secrets.VM_PORT }}
         run: |
-          # nohup and & run the process in the background so the workflow can finish
           nohup mvn spring-boot:run -Dspring-boot.run.arguments="--server.port=${SERVER_PORT}" &
 
   
