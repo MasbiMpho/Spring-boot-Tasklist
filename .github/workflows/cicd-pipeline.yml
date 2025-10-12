@@ -111,17 +111,20 @@ jobs:
             APP_PORT=${{ secrets.VM_PORT }}
             DB_URL=jdbc:postgresql://${{ secrets.HOST_IP }}:5432/${{ secrets.DB_NAME }}
             EOF
-
+      
       - name: Stop any running Maven Spring Boot app
         run: |
           echo "Checking for running Spring Boot process..."
-          PID=$(pgrep -f 'mvn spring-boot:run')
+          ps aux | grep 'mvn' | grep -v grep  # helpful debug
+      
+          PID=$(pgrep -f 'spring-boot:run')
           if [ ! -z "$PID" ]; then
-            echo "Found running app with PID $PID. Stopping it..."
+            echo "Found running Spring Boot app with PID $PID. Stopping it..."
             kill -9 $PID
           else
             echo "No Spring Boot app running."
           fi
+
 
       - name: Run the application with Maven
         env:
