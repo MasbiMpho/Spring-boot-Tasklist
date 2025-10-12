@@ -22,17 +22,48 @@ jobs:
           cache: 'maven'
 
       - name: Log in to Docker Hub
-        if: ${{ secrets.DOCKER_USERNAME != '' && secrets.DOCKER_PASSWORD != '' }}
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and Test with Maven
+      - name: Remove existing container (if any)
         run: |
-          mvn clean package -DskipTests=false
-          mvn test
-s
+          docker rm -f taskdb_db || true
+
+      - name: Start database using Docker Compose
+        env:
+          POSTGRES_DB: taskdb
+          POSTGRES_USER: ${{ secrets.DB_USERNAME }}
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          POSTGRES_PORT: 5432
+          POSTGRES_VERSION: 17
+          APP_PORT: 8080
+        run: |
+          docker compose -f ./docker-compose.yml up -d db
+
+      - name: Wait for database to be ready
+        run: |
+          echo "Waiting for PostgreSQL to be ready..."
+          for i in {1..30}; do
+            if docker exec $(docker ps -qf "name=db") pg_isready -U ${{ secrets.DB_USERNAME }} > /dev/null; then
+              echo "Database is ready!"
+              break
+            else
+              echo "Waiting... ($i)"
+              sleep 2
+            fi
+          done
+
+      - name: Build and Test with Maven
+        env:
+          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/${{ secrets.DB_NAME }}
+          SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}
+          SPRING_DATASOURCE_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          APP_PORT: ${{ secrets.VM_PORT }}
+        run: |
+          mvn clean test -Dspring-boot.run.arguments="--server.port=${APP_PORT}"
+
       - name: Prepare deployment folder
         run: |
           if [ ! -d "$HOME/tasklist" ]; then
@@ -43,22 +74,33 @@ s
             cd ~/tasklist
             git pull origin main
           fi
-
+  
+      - name: Create .env file in deployment folder
+        run: |
+            cat <<EOF > ~/tasklist/.env
+            POSTGRES_VERSION=17
+            POSTGRES_DB=${{ secrets.DB_NAME }}
+            POSTGRES_USER=${{ secrets.DB_USERNAME }}
+            POSTGRES_PASSWORD=${{ secrets.DB_PASSWORD }}
+            POSTGRES_PORT=5432
+            APP_PORT=${{ secrets.VM_PORT }}
+            DB_URL=jdbc:postgresql://${{ secrets.HOST_IP }}:5432/${{ secrets.DB_NAME }}
+            EOF
+    
       - name: Deploy Spring Boot app with Docker Compose
         run: |
           cd ~/tasklist
           echo "Stopping old containers..."
-          docker compose down || true
+          docker compose down --remove-orphans || true
+          docker rm -f taskdb_db || true 
 
           echo "Rebuilding and starting containers..."
           docker compose up -d --build
 
           echo "Deployment complete!"
 
-      - name: Push image to Docker Hub
-        if: ${{ secrets.DOCKER_USERNAME != '' && secrets.DOCKER_PASSWORD != '' }}
-        run: |
-          echo "Tagging image..."
-          docker tag tasklist_app:latest ${{ secrets.DOCKER_USERNAME }}/tasklist:latest
-          echo "Pushing to Docker Hub..."
-          docker push ${{ secrets.DOCKER_USERNAME }}/tasklist:latest
+          docker compose down
+
+          echo "Container stopped"
+
+  

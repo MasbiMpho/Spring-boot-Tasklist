@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -122,9 +124,10 @@ public class TaskController {
 
     //Done w/ logging
     @Operation(summary = "Mark Task as Completed", description = "Mark a task as completed by its ID")
-    @PostMapping("/mark")
+    @PutMapping("/mark")
     public ResponseEntity<String> markTaskAsCompleted(@RequestParam Long id) {
         logger.info("Marking task with ID " + id + " as Completed.");
+
         return taskRepository.findById(id)
                 .map(task -> {
                     task.setStatus("completed");
@@ -141,9 +144,10 @@ public class TaskController {
                 });
     }
 
+    
     //Done w/ logging
     @Operation(summary = "Mark Task as Uncompleted", description = "Mark a task as uncompleted by its ID")
-    @PostMapping("/unmark")
+    @PutMapping("/unmark")
     public ResponseEntity<String> markTaskAsUncompleted(@RequestParam Long id) {
         logger.info("Marking task with ID " + id + " as Uncompleted.");
         return taskRepository.findById(id)
@@ -152,6 +156,49 @@ public class TaskController {
                     taskRepository.save(task);
 
                     String message = "Task id " + id + " has been marked as Uncompleted.";
+                    logger.debug(message);
+                    return ResponseEntity.ok(message);
+                })
+                .orElseGet(() -> {
+                    String errorMessage = "Task not found with id " + id;
+                    logger.warn(errorMessage);
+                    return ResponseEntity.status(404).body(errorMessage);
+                });
+    }
+
+    @Operation(summary = "Update Task", description = "Update a task's name and due date by its ID")
+    @PutMapping("/updatetask")
+    public ResponseEntity<String> updateTask(@RequestParam Long id, @RequestParam String name, @RequestParam @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate due_date) {
+        logger.info("Updating task with ID: {}", id);
+
+        return taskRepository.findById(id)
+                .map(task -> {
+                    task.setName(name);
+                    task.setDue_Date(due_date);
+                    task.setStatus("uncompleted");
+                    taskRepository.save(task);
+
+                    String message = "Task id " + id + " has been updated.";
+                    logger.debug(message);
+                    return ResponseEntity.ok(message);
+                })
+                .orElseGet(() -> {
+                    String errorMessage = "Task not found with id " + id;
+                    logger.warn(errorMessage);
+                    return ResponseEntity.status(404).body(errorMessage);
+                });
+    }
+
+    @Operation(summary = "Delete Task", description = "Delete a task by its ID")
+    @DeleteMapping("/deletetask")
+    public ResponseEntity<String> deleteTask(@RequestParam Long id) {
+        logger.info("Deleting task with ID: {}", id);
+
+        return taskRepository.findById(id)
+                .map(task -> {
+                    taskRepository.delete(task);
+
+                    String message = "Task id " + id + " has been deleted.";
                     logger.debug(message);
                     return ResponseEntity.ok(message);
                 })
