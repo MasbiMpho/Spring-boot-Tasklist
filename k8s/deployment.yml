@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tasklist
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tasklist
+  template:
+    metadata:
+      labels:
+        app: tasklist
+    spec:
+      containers:
+      - name: springboot_tasklist
+        image: mpho15/springboot_tasklist_app:latest
+        ports:
+        - containerPort: 3000
