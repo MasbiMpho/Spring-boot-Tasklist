@@ -26,64 +26,11 @@ jobs:
       - name: Build with Maven
         run: mvn clean install
 
-  # Job 2: Test
-  test:
-    name: ✅ Test with PostgreSQL
-    runs-on: self-hosted
-    needs: build
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Clean up previous containers
-        run: |
-          docker rm -f taskdb_db springboot_tasklist_app || true
-
-      - name: Create Docker network
-        run: |
-          docker network create spring_network || true
-
-      - name: Run PostgreSQL Container
-        run: |
-          docker volume create postgres_data || true
-          docker run -d \
-            --name taskdb_db \
-            --network spring_network \
-            -v postgres_data:/var/lib/postgresql/data \
-            -e POSTGRES_DB=${{ secrets.DB_NAME }} \
-            -e POSTGRES_USER=${{ secrets.DB_USERNAME }} \
-            -e POSTGRES_PASSWORD=${{ secrets.DB_PASSWORD }} \
-            -p 5432:5432 \
-            postgres:17
-
-      - name: Wait for PostgreSQL to be ready
-        run: |
-          echo "Waiting for PostgreSQL to be ready..."
-          for i in {1..30}; do
-            if docker exec taskdb_db pg_isready -U ${{ secrets.DB_USERNAME }} > /dev/null; then
-              echo "PostgreSQL is ready!"
-              break
-            else
-              echo "Waiting... ($i)"
-              sleep 2
-            fi
-          done
-
-      - name: Test with Maven
-        env:
-          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/${{ secrets.DB_NAME }}
-          SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}
-          SPRING_DATASOURCE_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          APP_PORT: ${{ secrets.APP_PORT }}
-        run: |
-          mvn test -Dspring-boot.run.arguments="--server.port=${APP_PORT}"
-
-  # Job 3: Deploy
+        
   deploy:
     name: 🚀 Deploy
     runs-on: self-hosted
-    needs: test
+    needs: build
 
     steps:
       - name: Checkout repository
@@ -143,5 +90,56 @@ jobs:
           cd ~/tasklist
           nohup mvn spring-boot:run -Dspring-boot.run.arguments="--server.port=${SERVER_PORT}" > vm_app.log 2>&1 &
 
-      - name: Show Spring Boot log (last 30 lines)
-        run: tail -n 30 ~/tasklist/vm_app.log || echo "Log not found"
+
+  # Job 2: Test
+  test:
+    name: ✅ Test with PostgreSQL
+    runs-on: self-hosted
+    needs: deploy
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Clean up previous containers
+        run: |
+          docker rm -f taskdb_db springboot_tasklist_app || true
+
+      - name: Create Docker network
+        run: |
+          docker network create spring_network || true
+
+      - name: Run PostgreSQL Container
+        run: |
+          docker volume create postgres_data || true
+          docker run -d \
+            --name taskdb_db \
+            --network spring_network \
+            -v postgres_data:/var/lib/postgresql/data \
+            -e POSTGRES_DB=${{ secrets.DB_NAME }} \
+            -e POSTGRES_USER=${{ secrets.DB_USERNAME }} \
+            -e POSTGRES_PASSWORD=${{ secrets.DB_PASSWORD }} \
+            -p 5432:5432 \
+            postgres:17
+
+      - name: Wait for PostgreSQL to be ready
+        run: |
+          echo "Waiting for PostgreSQL to be ready..."
+          for i in {1..30}; do
+            if docker exec taskdb_db pg_isready -U ${{ secrets.DB_USERNAME }} > /dev/null; then
+              echo "PostgreSQL is ready!"
+              break
+            else
+              echo "Waiting... ($i)"
+              sleep 2
+            fi
+          done
+
+      - name: Test with Maven
+        env:
+          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/${{ secrets.DB_NAME }}
+          SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}
+          SPRING_DATASOURCE_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          APP_PORT: ${{ secrets.APP_PORT }}
+        run: |
+          mvn test -Dspring-boot.run.arguments="--server.port=${APP_PORT}"
