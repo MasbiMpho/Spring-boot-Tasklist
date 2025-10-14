@@ -7,9 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  # Job 1: Build
-  build:
-    name: 🛠️ Build
+  build-test-deploy:
     runs-on: self-hosted
 
     steps:
@@ -23,80 +21,11 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-        
-  deploy:
-    name: 🚀 Deploy
-    runs-on: self-hosted
-    needs: build
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Remove existing app container if exists
-        run: docker rm -f springboot_tasklist_app || true
-
-      - name: Run Spring Boot App Container
-        run: |
-          docker run -d \
-            --name springboot_tasklist_app \
-            --network spring_network \
-            -e SPRING_DATASOURCE_URL=jdbc:postgresql://taskdb_db:5432/${{ secrets.DB_NAME }} \
-            -e SPRING_DATASOURCE_USERNAME=${{ secrets.DB_USERNAME }} \
-            -e SPRING_DATASOURCE_PASSWORD=${{ secrets.DB_PASSWORD }} \
-            -e SERVER_PORT=${{ secrets.APP_PORT }} \
-            -p ${{ secrets.APP_PORT }}:${{ secrets.APP_PORT }} \
-            ${{ secrets.DOCKER_USERNAME }}/springboot_tasklist_app:latest
-
-      - name: Prepare deployment folder
-        run: |
-          if [ ! -d "$HOME/tasklist" ]; then
-            echo "Folder ~/tasklist not found. Cloning fresh copy..."
-            git clone https://github.com/${{ github.repository }} ~/tasklist
-          else
-            echo "Folder exists. Pulling latest changes..."
-            cd ~/tasklist
-            git pull origin main
-          fi
-
-      - name: Create .env file in deployment folder
-        run: |
-          cat <<EOF > ~/tasklist/.env
-          POSTGRES_VERSION=17
-          POSTGRES_DB=${{ secrets.DB_NAME }}
-          POSTGRES_USER=${{ secrets.DB_USERNAME }}
-          POSTGRES_PASSWORD=${{ secrets.DB_PASSWORD }}
-          POSTGRES_PORT=5432
-          APP_PORT=${{ secrets.VM_PORT }}
-          DB_URL=jdbc:postgresql://${{ secrets.HOST_IP }}:5432/${{ secrets.DB_NAME }}
-          EOF
-
-      - name: Run Spring Boot directly on VM (optional)
-        env:
-          SPRING_DATASOURCE_URL: jdbc:postgresql://${{ secrets.HOST_IP }}:5432/${{ secrets.DB_NAME }}
-          SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}
-          SPRING_DATASOURCE_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          SERVER_PORT: ${{ secrets.VM_PORT }}
-        run: |
-          cd ~/tasklist
-          nohup mvn spring-boot:run -Dspring-boot.run.arguments="--server.port=${SERVER_PORT}" > vm_app.log 2>&1 &
-
-
-  # Job 2: Test
-  test:
-    name: ✅ Test with PostgreSQL
-    runs-on: self-hosted
-    needs: deploy
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
 
       - name: Clean up previous containers
         run: |
@@ -119,6 +48,7 @@ jobs:
             -p 5432:5432 \
             postgres:17
 
+
       - name: Wait for PostgreSQL to be ready
         run: |
           echo "Waiting for PostgreSQL to be ready..."
@@ -132,11 +62,65 @@ jobs:
             fi
           done
 
-      - name: Test with Maven
+      - name: Build and Test with Maven
         env:
           SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/${{ secrets.DB_NAME }}
           SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}
           SPRING_DATASOURCE_PASSWORD: ${{ secrets.DB_PASSWORD }}
           APP_PORT: ${{ secrets.APP_PORT }}
         run: |
-          mvn test -Dspring-boot.run.arguments="--server.port=${APP_PORT}"
+          mvn clean test -Dspring-boot.run.arguments="--server.port=${APP_PORT}"
+
+      - name: Run Spring Boot App Container
+        run: |
+          # Remove existing container if exists
+          if [ "$(docker ps -aq -f name=springboot_tasklist_app)" ]; then
+            docker rm -f springboot_tasklist_app
+          fi
+
+          docker run -d \
+            --name springboot_tasklist_app \
+            --network spring_network \
+            -e SPRING_DATASOURCE_URL=jdbc:postgresql://taskdb_db:5432/${{ secrets.DB_NAME }} \
+            -e SPRING_DATASOURCE_USERNAME=${{ secrets.DB_USERNAME }} \
+            -e SPRING_DATASOURCE_PASSWORD=${{ secrets.DB_PASSWORD }} \
+            -e SERVER_PORT=${{ secrets.APP_PORT }} \
+            -p ${{ secrets.APP_PORT }}:${{ secrets.APP_PORT }} \
+            ${{ secrets.DOCKER_USERNAME }}/springboot_tasklist_app:latest
+
+
+      - name: Prepare deployment folder
+        run: |
+          if [ ! -d "$HOME/tasklist" ]; then
+            echo "Folder ~/tasklist not found. Cloning fresh copy..."
+            git clone https://github.com/${{ github.repository }} ~/tasklist
+          else
+            echo "Folder exists. Pulling latest changes..."
+            cd ~/tasklist
+            git pull origin main
+          fi
+  
+      - name: Create .env file in deployment folder
+        run: |
+            cat <<EOF > ~/tasklist/.env
+            POSTGRES_VERSION=17
+            POSTGRES_DB=${{ secrets.DB_NAME }}
+            POSTGRES_USER=${{ secrets.DB_USERNAME }}
+            POSTGRES_PASSWORD=${{ secrets.DB_PASSWORD }}
+            POSTGRES_PORT=5432
+            APP_PORT=${{ secrets.VM_PORT }}
+            DB_URL=jdbc:postgresql://${{ secrets.HOST_IP }}:5432/${{ secrets.DB_NAME }}
+            EOF
+      
+      
+      - name: Run the application with Maven
+        env:
+          SPRING_DATASOURCE_URL: jdbc:postgresql://${{ secrets.HOST_IP }}:5432/${{ secrets.DB_NAME }}
+          SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}
+          SPRING_DATASOURCE_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          SERVER_PORT: ${{ secrets.VM_PORT }}
+        run: |
+          nohup mvn spring-boot:run -Dspring-boot.run.arguments="--server.port=${VM_PORT}" > ~/tasklist/vm_app.log 2>&1 &
+
+
+  
