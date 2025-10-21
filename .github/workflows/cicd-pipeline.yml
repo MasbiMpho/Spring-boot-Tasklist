@@ -112,15 +112,6 @@ jobs:
             DB_URL=jdbc:postgresql://${{ secrets.HOST_IP }}:5432/${{ secrets.DB_NAME }}
             EOF
       
-      
-      - name: Run the application with Maven
-        env:
-          SPRING_DATASOURCE_URL: jdbc:postgresql://${{ secrets.HOST_IP }}:5432/${{ secrets.DB_NAME }}
-          SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}
-          SPRING_DATASOURCE_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          SERVER_PORT: ${{ secrets.VM_PORT }}
-        run: |
-          nohup mvn spring-boot:run -Dspring-boot.run.arguments="--server.port=${{ secrets.VM_PORT }}" 
 
 
   
