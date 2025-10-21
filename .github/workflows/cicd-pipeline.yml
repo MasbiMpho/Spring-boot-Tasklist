@@ -120,7 +120,7 @@ jobs:
           SPRING_DATASOURCE_PASSWORD: ${{ secrets.DB_PASSWORD }}
           SERVER_PORT: ${{ secrets.VM_PORT }}
         run: |
-          nohup mvn spring-boot:run -Dspring-boot.run.arguments="--server.port=${VM_PORT}" 
+          nohup mvn spring-boot:run -Dspring-boot.run.arguments="--server.port=${{ secrets.VM_PORT }}" 
 
 
   
