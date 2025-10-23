@@ -121,7 +121,7 @@ jobs:
         if: always()
         run: |
           echo "Cleaning up containers..."
-          docker ps -aq | xargs -r docker rm -f || true
+          docker stop taskdb_db springboot_tasklist_app
 
       - name: Force workflow exit
         if: always()
