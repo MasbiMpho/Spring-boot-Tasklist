@@ -23,12 +23,18 @@ services:
   app:
     build: .
     container_name: springboot_tasklist_app
+    image: springboot_tasklist_app:latest
     ports:
       - "${APP_PORT}:8080"
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${POSTGRES_DB}
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+
+      APPDYNAMICS_AGENT_APPLICATION_NAME: "Tasklist"
+      APPDYNAMICS_AGENT_TIER_NAME: "API"
+      APPDYNAMICS_AGENT_NODE_NAME: "docker-compose-node"
+      APPDYNAMICS_CONTROLLER_SSL_ENABLED: "true"
     depends_on:
       db:
         condition: service_healthy

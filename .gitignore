@@ -18,6 +18,7 @@ Thumbs.db
 
 #Environment variables
 .env
+.env.appd
 
 #Docker voloumes
 db_data/
